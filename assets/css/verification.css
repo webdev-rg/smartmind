@@ -1,0 +1,192 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  text-decoration: none;
+  list-style: none;
+  outline: none;
+}
+
+:root {
+  --bg-color: #f3f7ff;
+  --border-color: #e3e7ea;
+  --smart-mind-20: #ffffff;
+  --smart-mind-50: #edf7ff;
+  --smart-mind-100: #d6ecff;
+  --smart-mind-200: #b5dfff;
+  --smart-mind-300: #83ccff;
+  --smart-mind-400: #48b0ff;
+  --smart-mind-500: #1e8aff;
+  --smart-mind-600: #0669ff;
+  --smart-mind-700: #004eec;
+  --smart-mind-800: #0841c5;
+  --smart-mind-900: #0d3c9b;
+  --smart-mind-950: #0e255d;
+  --text-color: #0e0e11;
+}
+
+::selection {
+  background-color: var(--smart-mind-700);
+  color: var(--smart-mind-20);
+}
+
+::-webkit-scrollbar {
+  appearance: none;
+  width: 6px;
+  height: 6px;
+  background-color: #ddd;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 50px;
+  border: 1px solid #999;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  padding: 4rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  /* justify-content: center; */
+}
+
+.container .logo img {
+  width: 28rem;
+}
+
+.container h1 {
+  padding: 1rem 0;
+  text-align: center;
+  font-size: 3.8rem;
+  font-weight: 600;
+  color: var(--smart-mind-700);
+}
+
+.container .verification-container {
+  width: 42rem;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.verification-container .verification-form {
+  width: 100%;
+  border-radius: 1.2rem;
+  margin-top: 1.5rem;
+  padding: 2rem;
+}
+
+.verification-form .icon-1 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.verification-form .icon-1 .icon {
+  width: 5.5rem;
+  height: 5.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  text-align: center;
+  line-height: 5.5rem;
+}
+.verification-form .icon i {
+  font-size: 1.8rem;
+  color: var(--smart-mind-700);
+}
+
+.verification-form .head {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.head h2 {
+  font-size: 2.2rem;
+  color: var(--smart-mind-700);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+.head p {
+  font-size: 1.4rem;
+  color: var(--text-color);
+  line-height: 1.2;
+  letter-spacing: 0.4px;
+}
+
+.verification-form .input-field {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.input-field label {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--text-color);
+  letter-spacing: 0.4px;
+}
+.input-field input {
+  width: 100%;
+  height: 6rem;
+  background-color: transparent;
+  border: 2px solid var(--border-color);
+  border-radius: 1rem;
+  outline: 0;
+  padding: 0 1.5rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  letter-spacing: 0.5rem;
+}
+.input-field input:is(:focus, :valid) {
+  border-color: var(--smart-mind-600);
+}
+.input-field input::placeholder {
+  letter-spacing: normal;
+  font-weight: normal;
+}
+
+.verification-form .btn {
+  width: 100%;
+  height: 5rem;
+}
+.btn input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 1.2rem;
+  background-color: var(--smart-mind-500);
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--smart-mind-20);
+  letter-spacing: 0.6px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+.btn input[type="button"]:hover {
+  background-color: var(--smart-mind-600);
+}
+
+.btn input[type="button"]:disabled {
+  background-color: var(--smart-mind-400);
+  cursor: not-allowed;
+}

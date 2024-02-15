@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Montserrat", sans-serif;
+        text-decoration: none;
+        list-style: none;
+        outline: none;
+      }
+      body {
+        width: 100%;
+        height: 100vh;
+      }
+      .container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .email-container {
+        width: 500px;
+        padding: 20px 40px;
+        border-radius: 15px;
+        background-color: #fff;
+        box-shadow: 0 5px 20px  rgba(0, 0, 0, 0.12);
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+      .email-container h2 {
+        font-size: 28px;
+        line-height: 1.8;
+        color: #0e0e11;
+      }
+      .email-container p {
+        font-size: 15px;
+        line-height: 1.5;
+        font-weight: 500;
+      }
+      .email-container a {
+        width: 200px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 10px 0;
+        background-color: #004eec;
+        border-radius: 8px;
+        color: #fff;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="email-container">
+        <h2>Hi, Rushikesh Ghodke</h2>
+        <p
+          >We receive an request for resetting password from
+          <b>rushighodke01@gmail.com</b></p
+        >
+        <p>Click the below link to reset your password</p>
+        <a href="#">Reset Password</a>
+        <p><b>Note: </b>The verification link is active only for minutes. Verify your email before it gets expire</p>
+      </div>
+    </div>
+  </body>
+</html>

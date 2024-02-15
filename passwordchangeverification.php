@@ -1,0 +1,46 @@
+<?php
+
+require "./assets/php/connection.php";
+session_start();
+
+date_default_timezone_set('Asia/Kolkata');
+
+if (isset($_GET['token'])) {
+  $verificationCode = mysqli_real_escape_string($connection, $_GET['token']);
+
+  $selectQuery = "SELECT * FROM `changepasswordtoken` WHERE `verificationToken` = '$verificationCode'";
+
+  $result = mysqli_query($connection, $selectQuery);
+
+  if ($result && mysqli_num_rows($result) > 0) {
+    $row = mysqli_fetch_assoc($result);
+
+    $currentTimestamp = new DateTime();
+    $tokenExpirationTimestamp = new DateTime($row['tokenExpirationTime']);
+
+    if ($currentTimestamp < $tokenExpirationTimestamp) {
+      echo "<h1 style='text-align: center; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);'>Verification successful</h1>";
+      echo "<script>
+            setTimeout(() => {
+              window.location.replace('resetpassword.php');
+            }, 3000);
+          </script>";
+      exit();
+    }
+    else {
+      echo "<h1 style='text-align: center; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);'>
+              Verification Link has expired.
+          </h1>
+          ";
+      exit();
+    }
+  }
+  else {
+    echo "No rows found for the verification code.";
+  }
+}
+else {
+  echo "'token' parameter is not present in the URL.";
+}
+
+$connection->close();

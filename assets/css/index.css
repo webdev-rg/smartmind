@@ -1,0 +1,240 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  text-decoration: none;
+  list-style: none;
+  outline: none;
+}
+
+:root {
+  --bg-color: #f3f7ff;
+  --border-color: #e3e7ea;
+  --smart-mind-20: #ffffff;
+  --smart-mind-50: #edf7ff;
+  --smart-mind-100: #d6ecff;
+  --smart-mind-200: #b5dfff;
+  --smart-mind-300: #83ccff;
+  --smart-mind-400: #48b0ff;
+  --smart-mind-500: #1e8aff;
+  --smart-mind-600: #0669ff;
+  --smart-mind-700: #004eec;
+  --smart-mind-800: #0841c5;
+  --smart-mind-900: #0d3c9b;
+  --smart-mind-950: #0e255d;
+  --text-color: #0e0e11;
+}
+
+::selection {
+  background-color: var(--smart-mind-700);
+  color: var(--smart-mind-20);
+}
+
+::-webkit-scrollbar {
+  appearance: none;
+  width: 6px;
+  height: 6px;
+  background-color: #ddd;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 50px;
+  border: 1px solid #999;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  /* background-image: url(../images/hero-bg.png);
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center; */
+}
+
+.main-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.main-container .left-container {
+  width: 60%;
+  height: 100%;
+  background-color: var(--bg-color);
+  padding: 1.5rem;
+  border-radius: 0 1rem 1rem 0;
+}
+
+.left-container .left-inner-container {
+  width: 100%;
+  height: 100%;
+  background-color: var(--smart-mind-20);
+  border-radius: 1rem;
+  padding: 2.5rem;
+  position: relative;
+}
+
+.left-inner-container .logo {
+  width: 100%;
+  padding: 1rem 0;
+}
+.logo img {
+  width: 25rem;
+}
+
+.left-inner-container .heading {
+  position: absolute;
+  width: 100%;
+  height: calc(100% - 20rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.heading h1 {
+  font-size: 6.5rem;
+  color: var(--text-color);
+  line-height: 1.3;
+  letter-spacing: 0.4px;
+  transition: 0.3s ease-in-out;
+}
+.heading span {
+  position: fixed;
+  top: 62%;
+  transform: translateY(-50%);
+  margin-top: 1.5rem;
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--text-color);
+  line-height: 1.2;
+  letter-spacing: 0.3px;
+}
+
+.main-container .right-container {
+  width: 40%;
+  height: 100%;
+  background-color: var(--smart-mind-20);
+  padding: 1.5rem;
+  border-radius: 1rem 0 0 1rem;
+}
+.right-container .right-inner-container {
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-color);
+  border-radius: 1rem;
+}
+
+.right-inner-container .links {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* margin-top: -4rem; */
+}
+.links h2 {
+  font-size: 3.5rem;
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+}
+.links .btns {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+.btns a {
+  padding: 1.5rem 8rem;
+  background-color: var(--smart-mind-600);
+  border-radius: 8px;
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: var(--smart-mind-20);
+  letter-spacing: 0.3px;
+  transition: 0.3s ease-in-out;
+}
+.btns a:hover {
+  background-color: var(--smart-mind-700);
+}
+
+
+/* .main-container {
+  width: 60vw;
+  height: 75vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.main-container .logo {
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.main-container .logo img {
+  width: 30rem;
+  filter: invert(1);
+}
+
+.main-container .heading {
+  width: 100%;
+  padding: 1rem;
+  text-align: center;
+}
+.heading h1 {
+  font-size: 6.5rem;
+  color: var(--smart-mind-20);
+  line-height: 1.2;
+  letter-spacing: 0.4px;
+  margin-bottom: 2rem;
+}
+.heading span {
+  font-size: 2.2rem;
+  color: var(--smart-mind-50);
+  line-height: 1.6;
+}
+
+.main-container .links {
+  width: 100%;
+  padding: 1rem;
+  text-align: center;
+}
+.links h2 {
+  font-size: 2.8rem;
+  color: var(--smart-mind-20);
+}
+.links .btns {
+  width: 100%;
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+.btns a {
+  padding: 0.8rem 3rem;
+  background-color: var(--smart-mind-600);
+  border-radius: 5px;
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: var(--smart-mind-20);
+  letter-spacing: 0.3px;
+  transition: 0.3s ease-in-out;
+}
+.btns a:hover {
+  background-color: var(--smart-mind-700);
+} */

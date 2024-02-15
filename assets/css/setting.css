@@ -1,0 +1,474 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  text-decoration: none;
+  list-style: none;
+  outline: none;
+}
+
+:root {
+  --bg-color: #f3f7ff;
+  --border-color: #e3e7ea;
+  --smart-mind-20: #ffffff;
+  --smart-mind-50: #edf7ff;
+  --smart-mind-100: #d6ecff;
+  --smart-mind-200: #b5dfff;
+  --smart-mind-300: #83ccff;
+  --smart-mind-400: #48b0ff;
+  --smart-mind-500: #1e8aff;
+  --smart-mind-600: #0669ff;
+  --smart-mind-700: #004eec;
+  --smart-mind-800: #0841c5;
+  --smart-mind-900: #0d3c9b;
+  --smart-mind-950: #0e255d;
+  --text-color: #0e0e11;
+}
+
+::selection {
+  background-color: var(--smart-mind-700);
+  color: var(--smart-mind-20);
+}
+
+::-webkit-scrollbar {
+  appearance: none;
+  width: 6px;
+  height: 6px;
+  background-color: #ddd;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 50px;
+  border: 1px solid #999;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+
+.account-deletion {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  display: none;
+}
+.account-deletion.active {
+  display: flex;
+}
+.account-deletion .account-delete-form {
+  width: 50rem;
+  padding: 2rem;
+  background-color: var(--smart-mind-20);
+  border-radius: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.account-delete-form form {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+}
+form i {
+  position: absolute;
+  right: 0;
+  font-size: 3rem;
+  cursor: pointer;
+}
+.account-delete-form form h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-align: center;
+}
+.account-delete-form form span {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--text-color);
+  text-align: center;
+  line-height: 1.5;
+  letter-spacing: 0.4px;
+  margin-top: 1rem;
+}
+.account-delete-form form .input-field {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.account-delete-form form .input-field input {
+  width: 100%;
+  height: 5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  padding: 0 1rem;
+}
+.account-delete-form form .input-field input:is(:focus, :valid) {
+  border-color: var(--smart-mind-700);
+}
+.account-delete-form form input[type="submit"] {
+  font-size: 1.4rem;
+  font-weight: 500;
+  background-color: transparent;
+  letter-spacing: 0.4px;
+  color: #ef4444;
+  display: inline-block;
+  border-color: #ef4444;
+  padding: 1rem 1.5rem;
+  border: 1px solid #ef4444;
+  border-radius: 5px;
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
+}
+.account-delete-form form input[type="submit"]:hover {
+  background-color: #ef4444;
+  color: var(--smart-mind-20);
+}
+
+.password-change {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  display: none;
+}
+.password-change.active {
+  display: flex;
+}
+.password-change .password-change-form {
+  width: 50rem;
+  padding: 2rem;
+  background-color: var(--smart-mind-20);
+  border-radius: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.password-change-form form {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+}
+form i {
+  position: absolute;
+  right: 0;
+  font-size: 3rem;
+  cursor: pointer;
+}
+.password-change-form form h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.password-change-form form .input-field {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.password-change-form form .input-field input {
+  width: 100%;
+  height: 5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  padding: 0 1rem;
+}
+.password-change-form form input[type="submit"] {
+  font-size: 1.4rem;
+  font-weight: 500;
+  background-color: transparent;
+  letter-spacing: 0.4px;
+  color: var(--smart-mind-700);
+  display: inline-block;
+  border-color: var(--smart-mind-700);
+  padding: 1rem 1.5rem;
+  border: 1px solid var(--smart-mind-700);
+  border-radius: 5px;
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
+}
+.password-change-form form input[type="submit"]:hover {
+  background-color: var(--smart-mind-700);
+  color: var(--smart-mind-20);
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 7rem;
+  padding: 0 18rem;
+  background-color: var(--smart-mind-20);
+  border-radius: 0 0 2rem 2rem;
+  box-shadow: 5px 0 15px rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: 0.2s ease-in-out;
+  z-index: 999;
+}
+.header .left-side,
+.navbar,
+.navbar ul,
+.logo,
+.right-side,
+.right-side .user {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.left-side {
+  gap: 6rem;
+}
+.left-side .logo img {
+  width: 15rem;
+}
+
+.left-side .navbar ul {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+}
+.navbar ul li a {
+  font-size: 1.8rem;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+  color: var(--text-color);
+  transition: 0.2s ease-in-out;
+}
+.navbar ul li a:hover {
+  color: var(--smart-mind-700);
+}
+.navbar ul li.active a {
+  color: var(--smart-mind-700);
+}
+
+.user {
+  position: relative;
+}
+.user span {
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+.user span i {
+  font-size: 2rem;
+  margin-top: 0.5rem;
+}
+.user span:hover {
+  color: var(--smart-mind-700);
+}
+
+.user .user-menu {
+  position: absolute;
+  width: 20rem;
+  top: 90%;
+  left: 0;
+  padding: 1.5rem;
+  background-color: var(--smart-mind-20);
+  border-radius: 1rem;
+  box-shadow: 0 5px 3rem rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: 0.2s ease-in-out;
+}
+
+.user-menu li a {
+  display: block;
+  padding: 1rem 1rem;
+  border-radius: 0.5rem;
+  transition: 0.2s ease-in-out;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--text-color);
+}
+.user-menu li.active a {
+  background-color: var(--bg-color);
+  color: var(--smart-mind-700);
+}
+.user-menu li a:hover {
+  background-color: var(--bg-color);
+  color: var(--smart-mind-700);
+}
+
+.user:hover > .user-menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.setting-container {
+  width: 100%;
+  height: 100%;
+  padding: 7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.setting-container .container {
+  width: 90%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container .setting-form-container {
+  width: 60%;
+}
+.container .heading {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  padding: 3rem;
+}
+.heading h1 {
+  font-size: 5.2rem;
+  font-weight: 600;
+  color: var(--text-color);
+  line-height: 1.9;
+  letter-spacing: 0.4px;
+}
+
+.setting-form-container .setting-form {
+  width: 100%;
+  padding: 2rem;
+  border: 1px solid var(--border-color);
+  border-radius: 2rem;
+  background-color: var(--smart-mind-20);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.setting-form .input-field {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+}
+.input-field label {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.setting-form .input-group {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.input-field input {
+  width: 100%;
+  height: 6rem;
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 1.5rem;
+  outline: 0;
+  padding: 0 1.5rem;
+  font-size: 1.6rem;
+  color: var(--text-color);
+}
+.input-field input:read-only {
+  background-color: var(--bg-color);
+  cursor: not-allowed;
+}
+
+.setting-form .change-password-btn {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+.change-password-btn span {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--text-color);
+}
+.change-password-btn input[type="submit"] {
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+  color: var(--smart-mind-700);
+  background-color: transparent;
+  display: inline-block;
+  border-color: var(--smart-mind-700);
+  padding: 1rem 1.5rem;
+  border: 1px solid var(--smart-mind-700);
+  border-radius: 5px;
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
+}
+.change-password-btn input[type="submit"]:hover {
+  background-color: var(--smart-mind-700);
+  color: var(--smart-mind-20);
+}
+
+.setting-form .account-delete-btn {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+.account-delete-btn span {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--text-color);
+}
+.account-delete-btn button {
+  font-size: 1.4rem;
+  font-weight: 500;
+  background-color: transparent;
+  letter-spacing: 0.4px;
+  color: #ef4444;
+  display: inline-block;
+  border-color: #ef4444;
+  padding: 1rem 1.5rem;
+  border: 1px solid #ef4444;
+  border-radius: 5px;
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
+}
+.account-delete-btn button:hover {
+  background-color: #ef4444;
+  color: var(--smart-mind-20);
+}
