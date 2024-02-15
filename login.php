@@ -73,7 +73,7 @@ include "./assets/php/loginUser.php";
               <div class="input-group">
                 <div class="input-field email">
                   <label for="email"><i class="fi fi-rr-envelope"></i></label>
-                  <input type="email" name="email" id="email" placeholder="Email" required />
+                  <input type="email" name="email" id="email" placeholder="Email" required autofocus/>
                 </div>
                 <div class="input-field password">
                   <label for="password"><i class="fi fi-rr-lock"></i></label>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 15, 2024 at 05:41 AM
+-- Generation Time: Feb 15, 2024 at 03:01 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -110,7 +110,8 @@ CREATE TABLE `students` (
 INSERT INTO `students` (`studentId`, `studentUniqueId`, `firstName`, `lastName`, `dateOfBirth`, `gender`, `email`, `mobileNumber`, `username`, `studentImage`, `password`, `accountCreationDateTime`, `verificationToken`, `tokenExpirationTime`, `isVerified`) VALUES
 (1, 982337, 'Rushikesh', 'Ghodke', '2001-09-19', 'male', 'rushighodke01@gmail.com', '9082600331', 'rushi_19', 'IMG_20210917_210850_999.webp', '$2y$10$VwaeIiMwkW1cwP9SjQeKwOsjvEIq7ePk6BNd8mNinWKRmVgsLPHb2', '2024-02-14 21:13:19', '65ccdf972572c', '2024-02-14 21:18:19', 1),
 (2, 796104, 'Saurabh', 'Jadhav', '2003-09-28', 'male', 'saurabhjadhav9642@gmail.com', '8421569642', 'saurabhJ28', 'saurabhjadhav.jpg', '$2y$10$R6YUkjnM9rOxljl8kkrKs.YNxpz7OSlKRxeOdxmsx2TQlBYKZ5pPq', '2024-02-15 08:39:03', '65cd804f92b4d', '2024-02-15 08:44:03', 1),
-(3, 505792, 'Prathamesh', 'Khandagale', '2003-12-03', 'male', 'khandagaleprathamesh5@gmail.com', '8855842906', 'prathameshkhandagale258', '', '$2y$10$fnug4EaYzrmTX6B08Jd0Ie69ft/SqCcpwjc0HvamfYsRqDM1xhm1a', '2024-02-15 08:53:27', '65cd83afaed1b', '2024-02-15 08:58:27', 1);
+(3, 505792, 'Prathamesh', 'Khandagale', '2003-12-03', 'male', 'khandagaleprathamesh5@gmail.com', '8855842906', 'prathameshkhandagale258', '', '$2y$10$fnug4EaYzrmTX6B08Jd0Ie69ft/SqCcpwjc0HvamfYsRqDM1xhm1a', '2024-02-15 08:53:27', '65cd83afaed1b', '2024-02-15 08:58:27', 1),
+(7, 417385, 'Rushikesh', 'Ghodke', '2001-09-19', 'male', 'rushi.ghodke09@gmail.com', '7485968574', 'rushikeshghodke102', '', '$2y$10$reL0P0aFgGuMSF070wjBZurRSr8E9VUSEBAZG/MwZfxQixDcakXDi', '2024-02-15 19:29:54', '65ce18da01a57', '2024-02-15 19:34:54', 1);
 
 --
 -- Indexes for dumped tables
@@ -166,7 +167,7 @@ ALTER TABLE `changepasswordtoken`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `studentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `studentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
