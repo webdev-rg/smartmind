@@ -13,6 +13,6 @@ if (!empty($_SESSION['adminId'])) {
 }
 else
 {
-  header("Location: adminLogin.php"); // if not login admin will be redirected to login page
+  header("Location: adminlogin.php"); // if not login admin will be redirected to login page
 }
 ?>

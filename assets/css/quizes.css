@@ -172,7 +172,7 @@ body {
 
 .quizes-section {
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   background-color: var(--bg-color);
   padding: 7rem;
   display: flex;
@@ -211,10 +211,10 @@ body {
 }
 
 .container .quiz-card-container {
-  width: 120rem;
+  width: 110rem;
   margin-top: 2rem;
   display: grid;
-  grid-template-columns: repeat(2, 60rem);
+  grid-template-columns: repeat(2, 55rem);
   gap: 2rem;
 }
 .quiz-card-container .quiz-card {
@@ -259,9 +259,10 @@ body {
   gap: 0.6rem;
 }
 .quiz-info-item h5 {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 700;
   color: var(--text-color);
+  letter-spacing: 0.5px;
 }
 .quiz-info-item .quiz-info-item-label {
   font-size: 1.6rem;

@@ -60,7 +60,7 @@ include "../assets/php/admin/storeAdminData.php";
             </div>
           </form>
 
-          <p>Already Admin? <a href="./adminLogin.php">Login</a></p>
+          <p>Already Admin? <a href="./adminlogin.php">Login</a></p>
         </div>
       </div>
     </div>

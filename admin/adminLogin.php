@@ -61,7 +61,7 @@ include "../assets/php/admin/loginAdmin.php";
               </div>
             </div>
           </form>
-          <p>New Admin? <a href="./adminRegister.php">Register</a></p>
+          <p>New Admin? <a href="./adminregister.php">Register</a></p>
         </div>
       </div>
     </div>
