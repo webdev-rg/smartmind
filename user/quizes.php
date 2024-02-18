@@ -1,5 +1,5 @@
 <?php
-include "./assets/php/connection.php";
+include "../assets/php/connection.php";
 $selectQuizes = mysqli_query($connection, "SELECT * FROM `quiz_topics`");
 ?>
 
@@ -12,11 +12,11 @@ $selectQuizes = mysqli_query($connection, "SELECT * FROM `quiz_topics`");
   <title>Choose Quiz</title>
 
   <!-- Css -->
-  <link rel="stylesheet" href="./assets/css/quizes.css" />
+  <link rel="stylesheet" href="../assets/css/quizes.css" />
 
   <!-- Favicon -->
-  <link rel="shortcut icon" href="./assets/images/favicon.ico" type="image/x-icon" />
-  <link rel="shortcut icon" href="./assets/images/apple-touch-icon.png" type="image/x-icon" />
+  <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="../assets/images/apple-touch-icon.png" type="image/x-icon" />
 
   <!-- Icons CDN Link -->
   <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css" />
@@ -27,7 +27,7 @@ $selectQuizes = mysqli_query($connection, "SELECT * FROM `quiz_topics`");
   <header class="header">
     <div class="left-side">
       <div class="logo">
-        <img src="./assets/images/Logo.svg" alt="logo" />
+        <img src="../assets/images/Logo.svg" alt="logo" />
       </div>
       <nav class="navbar">
         <ul>
@@ -66,7 +66,7 @@ $selectQuizes = mysqli_query($connection, "SELECT * FROM `quiz_topics`");
             <div class="quiz-card">
               <div class="quiz-lang-img">
                 <div class="img">
-                  <img src="./assets/images/Javascript.png" alt="quiz-lang-image">
+                  <img src="../assets/images/Javascript.png" alt="quiz-lang-image">
                 </div>
               </div>
 

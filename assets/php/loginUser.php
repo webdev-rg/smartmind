@@ -125,7 +125,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo '
           <script>
             setTimeout(() => {
-              window.location.replace("../user/profile.php");
+              window.location.replace("../smartmind-online-quiz-game/user/profile.php");
             }, 2500);
           </script>
         ';

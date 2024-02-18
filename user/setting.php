@@ -1,7 +1,7 @@
 <?php
-include "./assets/php/deleteAccount.php";
-include "./assets/php/profileDetails.php";
-include "./assets/php/changePassword.php";
+include "../assets/php/deleteAccount.php";
+include "../assets/php/profileDetails.php";
+include "../assets/php/changePassword.php";
 ?>
 
 <!DOCTYPE html>
@@ -13,11 +13,11 @@ include "./assets/php/changePassword.php";
   <title>Setting</title>
 
   <!-- Css -->
-  <link rel="stylesheet" href="./assets/css/setting.css">
+  <link rel="stylesheet" href="../assets/css/setting.css">
 
   <!-- Favicon -->
-  <link rel="shortcut icon" href="./assets/images/favicon.ico" type="image/x-icon">
-  <link rel="shortcut icon" href="./assets/images/apple-touch-icon.png" type="image/x-icon">
+  <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="../assets/images/apple-touch-icon.png" type="image/x-icon">
 
   <!-- Icons CDN Link -->
   <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css" />
@@ -70,7 +70,7 @@ include "./assets/php/changePassword.php";
   <header class="header">
     <div class="left-side">
       <div class="logo">
-        <img src="./assets/images/Logo.svg" alt="logo" />
+        <img src="../assets/images/Logo.svg" alt="logo" />
       </div>
       <nav class="navbar">
         <ul>
