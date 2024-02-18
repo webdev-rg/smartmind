@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 15, 2024 at 03:01 PM
+-- Generation Time: Feb 17, 2024 at 09:33 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -82,6 +82,70 @@ INSERT INTO `changepasswordtoken` (`id`, `student_id`, `verificationToken`, `tok
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `quiz_questions`
+--
+
+CREATE TABLE `quiz_questions` (
+  `id` int(11) NOT NULL,
+  `topic_unique_id` varchar(15) NOT NULL,
+  `topic_name` varchar(255) NOT NULL,
+  `question` varchar(255) NOT NULL,
+  `option1` varchar(255) NOT NULL,
+  `option2` varchar(255) NOT NULL,
+  `option3` varchar(255) NOT NULL,
+  `option4` varchar(255) NOT NULL,
+  `answer` varchar(255) NOT NULL,
+  `marks` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `quiz_questions`
+--
+
+INSERT INTO `quiz_questions` (`id`, `topic_unique_id`, `topic_name`, `question`, `option1`, `option2`, `option3`, `option4`, `answer`, `marks`) VALUES
+(1, 'HqHz4Vh!C:oR', 'Html', 'What is Html?', 'Programming Language', 'Markup Language', 'OOPs', 'None of above', 'Markup Language', '2'),
+(2, 'MEq0|5NZcm5g', 'JavaScript', 'What is JavaScript?', 'Programming Language', 'Markup Language', 'OOPs', 'Both A and C', 'Both A and C', '2'),
+(3, 'HqHz4Vh!C:oR', 'Html', 'What is the full form of HTML', 'HyperTension Mobile Language', 'HyperText Markup Language', 'HyperTransport Markup Language', 'None of above', 'HyperText Markup Language', '2'),
+(4, 'HqHz4Vh!C:oR', 'Html', 'ferfw', 'fws', 'rwgfrwg', 'rgwgfv', 'wrfgv', 'wrgfvwr', '2'),
+(5, 'HqHz4Vh!C:oR', 'Html', 'wsgfw', 'wrgrwg', 'wrgv', 'gv', 'rgv', 'rwrfgrwg', 'wrg'),
+(6, 'HqHz4Vh!C:oR', 'Html', 'efw', 'efwq', 'frwq', 'wefe', 'wefw', 'efwq', '2'),
+(7, 'HqHz4Vh!C:oR', 'Html', 'q3', 'qerfq', 'qe3', 'qrfe3', 'safre', 'wefwf', '2'),
+(8, 'HqHz4Vh!C:oR', 'Html', 'wef', 'wregfrew', 'weer', 'werfger', 'wfgf', 'wfw', '2'),
+(9, 'MEq0|5NZcm5g', 'JavaScript', 'djsjfs', 'djnsj', 'sgsjgu', 'sgnsjkgs', 'khkgwg', 'whgw', '2'),
+(10, 'HqHz4Vh!C:oR', 'Html', 'ewfw', 'wrgg', 'wrgr', 'wrgr', 'wrg', 'wrgr', '2'),
+(11, 'MEq0|5NZcm5g', 'JavaScript', 'wrgr', 'wrgrwg', 'wrg', 'wrgg', 'wrg', 'wr', '2'),
+(12, 'MEq0|5NZcm5g', 'JavaScript', 'wqe', 'wefe', 'wqef', 'wefwe', 'wef', 'weff', 'wefef');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `quiz_topics`
+--
+
+CREATE TABLE `quiz_topics` (
+  `topic_id` int(11) NOT NULL,
+  `topicUniqueId` varchar(50) NOT NULL,
+  `topic_name` varchar(255) NOT NULL,
+  `questions` varchar(100) NOT NULL,
+  `marks` varchar(50) NOT NULL,
+  `quiz_time` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `quiz_topics`
+--
+
+INSERT INTO `quiz_topics` (`topic_id`, `topicUniqueId`, `topic_name`, `questions`, `marks`, `quiz_time`) VALUES
+(1, 'HqHz4Vh!C:oR', 'Html', '8', '14', ''),
+(2, 'MEq0|5NZcm5g', 'JavaScript', '4', '6', ''),
+(6, 'X[GDX}kM@NN[', 'Java', '', '', ''),
+(7, ']dexdnDDo]<{', 'Python', '', '', ''),
+(8, 'GyeBXSDF768p', 'Php', '', '', ''),
+(9, 'HiA9NFU@nN%3', 'CSS', '', '', '');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `students`
 --
 
@@ -136,6 +200,18 @@ ALTER TABLE `changepasswordtoken`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `quiz_questions`
+--
+ALTER TABLE `quiz_questions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `quiz_topics`
+--
+ALTER TABLE `quiz_topics`
+  ADD PRIMARY KEY (`topic_id`);
+
+--
 -- Indexes for table `students`
 --
 ALTER TABLE `students`
@@ -162,6 +238,18 @@ ALTER TABLE `attempted_quiz`
 --
 ALTER TABLE `changepasswordtoken`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `quiz_questions`
+--
+ALTER TABLE `quiz_questions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `quiz_topics`
+--
+ALTER TABLE `quiz_topics`
+  MODIFY `topic_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `students`

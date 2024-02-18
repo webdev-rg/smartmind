@@ -175,6 +175,7 @@ body {
 .profile-container {
   width: 100%;
   height: 100%;
+  background-color: var(--smart-mind-20);
   padding-top: 7rem;
   display: flex;
   align-items: center;
@@ -215,7 +216,7 @@ body {
   height: 20rem;
   border: 1rem solid var(--smart-mind-20);
   border-radius: 50%;
-  box-shadow: 0 5px 2rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.15);
 }
 .image img {
   width: 100%;

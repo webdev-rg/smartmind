@@ -1,6 +1,5 @@
 <?php 
 require "connection.php";
-session_start();
 
 if (!empty($_SESSION['studentId'])) {
   $studentId = $_SESSION['studentId'];
@@ -8,6 +7,9 @@ if (!empty($_SESSION['studentId'])) {
 
   if ($selectQuery) {
     $fetchData = mysqli_fetch_assoc($selectQuery);
+  }
+  else {
+    echo mysqli_error($connection);
   }
 }
 else
