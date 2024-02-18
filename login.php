@@ -86,7 +86,7 @@ include "./assets/php/loginUser.php";
               </div>
 
               <div class="btn">
-                <input type="submit" value="Login" name="submit" id="loginBtn" class="loginBtn" />
+                <input type="button" value="Login" name="submit" id="loginBtn" class="loginBtn" />
               </div>
             </div>
           </form>
@@ -95,8 +95,8 @@ include "./assets/php/loginUser.php";
     </div>
   </div>
 
-  <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script type="module" src="./assets/js/login.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script type="module" src="./assets/js/login.js"></script>
 </body>
 
 </html>

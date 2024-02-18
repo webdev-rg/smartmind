@@ -99,7 +99,7 @@ $selectQuery = mysqli_query($connection, "SELECT * FROM `students`");
 
         <section class="inner-right-side">
           <!-- Dashboard -->
-          <div class="dashboard section ">
+          <div class="dashboard section active">
             <div class="cards">
               <div class="card">
                 <div class="icon">
@@ -128,7 +128,7 @@ $selectQuery = mysqli_query($connection, "SELECT * FROM `students`");
             </div>
           </div>
           <!-- Students -->
-          <div class="students section active">
+          <div class="students section">
             <h1>Students</h1>
 
             <div class="student-section">

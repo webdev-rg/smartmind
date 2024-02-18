@@ -45,7 +45,7 @@ include "../assets/php/updateProfile.php";
           <li><a href="./profile.php">My Profile</a></li>
           <li class="active"><a href="./editprofile.php">Edit My Profile</a></li>
           <li><a href="./setting.php">Setting</a></li>
-          <li><a href="./logout.php">Logout</a></li>
+          <li><a href="../logout.php">Logout</a></li>
         </ul>
       </div>
     </div>

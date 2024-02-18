@@ -45,7 +45,7 @@ $selectQuizes = mysqli_query($connection, "SELECT * FROM `quiz_topics`");
           <li class="active"><a href="./quizes.php">Quizes</a></li>
           <li><a href="./editprofile.php">Edit Profile</a></li>
           <li><a href="./setting.php">Setting</a></li>
-          <li><a href="./logout.php">Logout</a></li>
+          <li><a href="../logout.php">Logout</a></li>
         </ul>
       </div>
     </div>
