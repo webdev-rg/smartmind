@@ -63,7 +63,7 @@ $selectQuery = mysqli_query($connection, "SELECT * FROM `students`");
               </ul>
             </div>
             <div class="logout-btn">
-              <a href="../adminlogout.php">
+              <a href="../logout.php">
                 <div class="icon">
                   <img src="../assets/images/icons/logout.png" alt="logout-icon">
                 </div>
@@ -73,6 +73,7 @@ $selectQuery = mysqli_query($connection, "SELECT * FROM `students`");
           </nav>
         </div>
       </div>
+
       <div class="right-side">
         <!-- Header -->
         <header class="header">
@@ -91,7 +92,7 @@ $selectQuery = mysqli_query($connection, "SELECT * FROM `students`");
             <ul class="admin-menu">
               <li class="active"><a href="./profile.php">Profile</a></li>
               <li><a href="./setting.php">Setting</a></li>
-              <li><a href="../adminlogout.php">Logout</a></li>
+              <li><a href="../logout.php">Logout</a></li>
             </ul>
           </div>
         </header>

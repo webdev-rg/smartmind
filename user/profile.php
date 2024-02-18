@@ -1,6 +1,6 @@
 <?php
-include "./assets/php/profileDetails.php";
-include "./assets/php/attemptedQuiz.php";
+include "../assets/php/profileDetails.php";
+include "../assets/php/attemptedQuiz.php";
 ?>
 
 <!DOCTYPE html>
@@ -14,11 +14,11 @@ include "./assets/php/attemptedQuiz.php";
   </title>
 
   <!-- Css -->
-  <link rel="stylesheet" href="./assets/css/profile.css" />
+  <link rel="stylesheet" href="../assets/css/profile.css" />
 
   <!-- Favicon -->
-  <link rel="shortcut icon" href="./assets/images/favicon.ico" type="image/x-icon">
-  <link rel="shortcut icon" href="./assets/images/apple-touch-icon.png" type="image/x-icon">
+  <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="../assets/images/apple-touch-icon.png" type="image/x-icon">
 
   <!-- Icons CDN Link -->
   <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css" />
@@ -29,7 +29,7 @@ include "./assets/php/attemptedQuiz.php";
   <header class="header">
     <div class="left-side">
       <div class="logo">
-        <img src="./assets/images/Logo.svg" alt="logo" />
+        <img src="../assets/images/Logo.svg" alt="logo" />
       </div>
       <nav class="navbar">
         <ul>
@@ -47,7 +47,7 @@ include "./assets/php/attemptedQuiz.php";
           <li><a href="./quizes.php">My Quizes</a></li>
           <li><a href="./editprofile.php">Edit Profile</a></li>
           <li><a href="./setting.php">Setting</a></li>
-          <li><a href="./logout.php">Logout</a></li>
+          <li><a href="../logout.php">Logout</a></li>
         </ul>
       </div>
     </div>
@@ -61,13 +61,13 @@ include "./assets/php/attemptedQuiz.php";
             <?php
             if (!empty($fetchData["studentImage"])) {
             ?>
-              <img src="./assets/StudentsProfileImages/<?php echo $fetchData["studentImage"]; ?>" style='width: 20rem; height: 20rem; object-fit: cover; border: 1rem solid #fff; text-align: center; border-radius: 50%; box-shadow: 0 5px 2rem rgba(0, 0, 0, 0.1);' class='profile-img'>
+              <img src="../assets/StudentsProfileImages/<?php echo $fetchData["studentImage"]; ?>" style='width: 20rem; height: 20rem; object-fit: cover; border: 1rem solid #fff; text-align: center; border-radius: 50%; box-shadow: 0 5px 2rem rgba(0, 0, 0, 0.1);' class='profile-img'>
 
             <?php
             } else {
             ?>
             <?php
-              echo "<img src='./assets/images/profile-user.png' style='width: 20rem; height: 20rem; object-fit: cover; text-align: center; border: 1rem solid #fff; border-radius: 50%; box-shadow: 0 5px 2rem rgba(0, 0, 0, 0.1);' class='profile-img'>";
+              echo "<img src='../assets/images/profile-user.png' style='width: 20rem; height: 20rem; object-fit: cover; text-align: center; border: 1rem solid #fff; border-radius: 50%; box-shadow: 0 5px 2rem rgba(0, 0, 0, 0.1);' class='profile-img'>";
             }
             ?>
           </label>
@@ -103,7 +103,7 @@ include "./assets/php/attemptedQuiz.php";
             <div class="quiz-container">
               <div class="lang-image-container">
                 <div class="lang-image">
-                  <img src="./assets/images/Javascript.png" alt="">
+                  <img src="../assets/images/Javascript.png" alt="">
                 </div>
               </div>
               <div class="quiz-attempted-info">

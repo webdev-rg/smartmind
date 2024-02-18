@@ -3,7 +3,7 @@ require "connection.php";
 session_start();
 
 if (!empty($_SESSION["studentId"])) {
-  header("Location: profile.php");
+  header("Location: ../smartmind-online-quiz-game/user/profile.php");
 }
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -125,7 +125,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo '
           <script>
             setTimeout(() => {
-              window.location.replace("profile.php");
+              window.location.replace("../user/profile.php");
             }, 2500);
           </script>
         ';

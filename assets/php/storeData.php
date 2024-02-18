@@ -12,7 +12,7 @@ require __DIR__ . "/../../PHPMailer/PHPMailer/src/SMTP.php";
 require "connection.php";
 
 if (!empty($_SESSION["studentId"])) {
-  header("Location: profile.php");
+  header("Location: ../smartmind-online-quiz-game/user/profile.php");
 }
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {

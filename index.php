@@ -53,6 +53,7 @@
       typeSpeed: 20,
       backDelay: 1500,
       loop: true,
+      showCursor: false,
       fadeOut: true,
     });
   </script>

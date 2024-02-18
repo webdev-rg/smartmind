@@ -1,6 +1,6 @@
 <?php
-include "./assets/php/profileDetails.php";
-include "./assets/php/updateProfile.php";
+include "../assets/php/profileDetails.php";
+include "../assets/php/updateProfile.php";
 ?>
 
 <!DOCTYPE html>
@@ -12,11 +12,11 @@ include "./assets/php/updateProfile.php";
   <title>Edit Profile</title>
 
   <!-- Css -->
-  <link rel="stylesheet" href="./assets/css/editprofile.css" />
+  <link rel="stylesheet" href="../assets/css/editprofile.css" />
 
   <!-- Favicon -->
-  <link rel="shortcut icon" href="./assets/images/favicon.ico" type="image/x-icon">
-  <link rel="shortcut icon" href="./assets/images/apple-touch-icon.png" type="image/x-icon">
+  <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="../assets/images/apple-touch-icon.png" type="image/x-icon">
 
   <!-- Icons CDN Link -->
   <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css" />
@@ -27,7 +27,7 @@ include "./assets/php/updateProfile.php";
   <header class="header">
     <div class="left-side">
       <div class="logo">
-        <img src="./assets/images/Logo.svg" alt="logo" />
+        <img src="../assets/images/Logo.svg" alt="logo" />
       </div>
       <nav class="navbar">
         <ul>
@@ -67,12 +67,12 @@ include "./assets/php/updateProfile.php";
                 <?php
                 if (!empty($fetchData["studentImage"])) {
                 ?>
-                  <img src="./assets/StudentsProfileImages/<?php echo $fetchData["studentImage"]; ?>" style='width: 20rem; height: 20rem; object-fit: cover; border: 1rem solid #fff; text-align: center; border-radius: 50%; box-shadow: 0 5px 2rem rgba(0, 0, 0, 0.1); cursor: pointer;' class='profile-img'>
+                  <img src="../assets/StudentsProfileImages/<?php echo $fetchData["studentImage"]; ?>" style='width: 20rem; height: 20rem; object-fit: cover; border: 1rem solid #fff; text-align: center; border-radius: 50%; box-shadow: 0 5px 2rem rgba(0, 0, 0, 0.1); cursor: pointer;' class='profile-img'>
                 <?php
                 } 
                 else {
                 ?>
-                  <img src='./assets/images/profile-user.png' style='width: 20rem; height: 20rem; object-fit: cover; text-align: center; border: 1rem solid #fff; border-radius: 50%; box-shadow: 0 5px 2rem rgba(0, 0, 0, 0.1); cursor: pointer;' class='profile-img'>"
+                  <img src='../assets/images/profile-user.png' style='width: 20rem; height: 20rem; object-fit: cover; text-align: center; border: 1rem solid #fff; border-radius: 50%; box-shadow: 0 5px 2rem rgba(0, 0, 0, 0.1); cursor: pointer;' class='profile-img'>"
                 <?php
                 }
                 ?>

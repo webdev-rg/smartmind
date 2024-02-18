@@ -1,5 +1,6 @@
 <?php 
 require "connection.php";
+session_start();
 
 if (!empty($_SESSION['studentId'])) {
   $studentId = $_SESSION['studentId'];
