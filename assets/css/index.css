@@ -73,9 +73,9 @@ body {
   width: 6rem;
   height: 6rem;
   border: 5px solid var(--smart-mind-600);
-  border-radius: 50%;
+  border-radius: 10rem;
   border-bottom-color: var(--smart-mind-100);
-  animation: loader 0.8s linear infinite;
+  animation: loader 0.5s linear infinite;
 }
 
 @keyframes loader {
@@ -83,7 +83,7 @@ body {
     transform: rotate(0);
   }
   100% {
-    transform: (360deg);
+    transform: rotate(360deg);
   }
 }
 

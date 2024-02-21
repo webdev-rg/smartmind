@@ -44,7 +44,7 @@ if (isset($_GET['token'])) {
       }
     } 
     else {
-      header("Location: linkexpired.php");
+      header("Location: linkexpired.html");
       exit();
     }
   } 

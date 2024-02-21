@@ -48,7 +48,7 @@ if (!empty($_SESSION["studentId"])) {
 
           $mail->isHTML(true);
           $mail->Subject = 'Password Reset Verification';
-          $verificationLink = 'http://localhost/smartmind-online-quiz-game/passwordchangeverification.php?token=' . $verificationCode;
+          $verificationLink = 'http://localhost/smartmind/passwordchangeverification.php?token=' . $verificationCode;
           $mail->Body =
           '<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin: 0 auto">' .
           '<tr>' .

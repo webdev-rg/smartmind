@@ -12,7 +12,7 @@ require __DIR__ . "/../../PHPMailer/PHPMailer/src/SMTP.php";
 require "connection.php";
 
 if (!empty($_SESSION["studentId"])) {
-  header("Location: ../smartmind-online-quiz-game/user/profile.php");
+  header("Location: ../smartmind/user/profile.php");
 }
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -71,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         $mail->isHTML(true);
         $mail->Subject = 'Email Verification';
-        $verificationLink = 'http://localhost/smartmind-online-quiz-game/emailverification.php?token=' . $verificationCode;
+        $verificationLink = 'http://localhost/smartmind/emailverification.php?token=' . $verificationCode;
         $mail->Body =
         '<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin: 0 auto">' .
           '<tr>' .
