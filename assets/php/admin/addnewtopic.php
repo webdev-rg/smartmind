@@ -20,6 +20,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $topicName = $_POST["newTopicName"];
     $topicUniqueId = quizUniqueId();
 
+    $languageImage = $_FILES["langImage"]["name"];
+    $target_dir = "../assets/languageImages/";
+    $target_file = $target_dir . basename($languageImage);
+
     $checkTopicExist = mysqli_query($connection, "SELECT `topic_name` FROM `quiz_topics` WHERE `topic_name` = '$topicName'");
 
     if (mysqli_num_rows($checkTopicExist) > 0) {
@@ -125,7 +129,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </html>
 
       ';
-      // header("refresh: 0; url = admin.php");
+      header("refresh: 0; url = admin.php");
       echo '
       <script>
         setTimeout(() => {
@@ -135,10 +139,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       </script>
     ';
     } else {
-      $insertTopic = "INSERT INTO `quiz_topics` (`topic_name`, `topicUniqueId`) VALUES('$topicName', '$topicUniqueId')";
+      $insertTopic = "INSERT INTO `quiz_topics` (`topic_name`, `topicUniqueId`, `langImages`) 
+      VALUES('$topicName', '$topicUniqueId', '$languageImage')";
       $result = mysqli_query($connection, $insertTopic);
 
       if ($result) {
+        move_uploaded_file($_FILES["langImage"]["tmp_name"], "$target_file");
         echo '
         <!DOCTYPE html>
           <html lang="en">

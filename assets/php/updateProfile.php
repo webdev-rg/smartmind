@@ -20,7 +20,7 @@ if (!empty($_SESSION['studentId'])) {
       $username = $_POST["username"];
 
       $ProfileImage = $_FILES["profile_pic"]["name"];
-      $target_dir = "./assets/StudentsProfileImages/";
+      $target_dir = "../assets/StudentsProfileImages/";
       $target_file = $target_dir . basename($ProfileImage);
 
       // Update the user's profile information

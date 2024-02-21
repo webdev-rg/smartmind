@@ -36,8 +36,8 @@ include "../assets/php/updateProfile.php";
       </div>
       <nav class="navbar">
         <ul>
-          <li><a href="./quizes.php">Quizes</a></li>
           <li><a href="./profile.php">My Profile</a></li>
+          <li><a href="./quizes.php">Quizes</a></li>
         </ul>
       </nav>
     </div>

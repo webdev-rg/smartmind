@@ -78,8 +78,8 @@ include "../assets/php/changePassword.php";
       </div>
       <nav class="navbar">
         <ul>
-          <li><a href="./quizes.php">Quizes</a></li>
           <li><a href="./profile.php">My Profile</a></li>
+          <li><a href="./quizes.php">Quizes</a></li>
         </ul>
       </nav>
     </div>
@@ -171,34 +171,9 @@ include "../assets/php/changePassword.php";
     closeDeleteForm.addEventListener("click", () => {
       accountDeletion.classList.remove("active");
     });
-
-    // const changePwdBtn = document.querySelector(".changePwdBtn");
-    // const closePwdForm = document.querySelector(".close-pwd-form");
-    // const passwordChange = document.querySelector(".password-change");
-
-    // changePwdBtn.addEventListener("click", () => {
-    //   Swal.fire({
-    //     title: "<h2 style='line-height: 2'>Are you sure?</h2><h2 style='font-size: 1.5rem; font-weight: 500; line-height: 1.9;'>You want to change your password?</h2>",
-    //     icon: "question",
-    //     showCancelButton: true,
-    //     confirmButtonColor: "#004eec",
-    //     cancelButtonColor: "#ef4444",
-    //     confirmButtonText: "<h2>Yes</h2>",
-    //     cancelButtonText: "<h2>Cancel</h2>",
-    //     width: "40rem",
-    //     iconColor: "#2a86ff",
-    //     allowOutsideClick: false  
-    //   }).then((result) => {
-    //     if (result.isConfirmed) {
-    //       passwordChange.classList.add("active");
-    //     }
-    //   });
-    // });
-
-    // closePwdForm.addEventListener("click", () => {
-    //   passwordChange.classList.remove("active");
-    // })
   </script>
+
+  <script src="../assets/js/script.js"></script>
 </body>
 
 </html>

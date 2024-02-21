@@ -170,7 +170,8 @@ $selectQuizes = mysqli_query($connection, "SELECT * FROM `quiz_topics`");
             <h1>Add New Topic</h1>
 
             <div class="new-topic-container">
-              <form action="#" method="post" class="new-topic-form">
+              <form action="#" method="post" class="new-topic-form" enctype="multipart/form-data">
+                <input type="file" name="langImage" id="langImage" accept="image/*">  
                 <div class="topic-input-field">
                   <label for="newTopicName"><i class="fi fi-rr-poll-h"></i></label>
                   <input type="text" name="newTopicName" id="newTopicName" placeholder="Enter New Topic Name" required>
@@ -187,7 +188,7 @@ $selectQuizes = mysqli_query($connection, "SELECT * FROM `quiz_topics`");
             <h1>Add New Questions to Topics</h1>
 
             <div class="add-questions-container">
-              <form action="#" method="post" class="question-form">
+              <form action="#" method="post" class="question-form" >
                 <div class="topic-dropdown">
                   <div class="select-topic">
                     <label for="selectTopic">Select Topic</label>
@@ -210,7 +211,7 @@ $selectQuizes = mysqli_query($connection, "SELECT * FROM `quiz_topics`");
                     ?>
                   </ul>
                 </div>
-
+                
                 <div class="question-options">
                   <div class="question-container">
                     <label for="question">Question</label>

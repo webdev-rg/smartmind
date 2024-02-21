@@ -1,9 +1,9 @@
 <?php
 include "../assets/php/connection.php";
 session_start();
-if(!empty($_SESSION['studentId'])) {
+if (!empty($_SESSION['studentId'])) {
   $selectQuizes = mysqli_query($connection, "SELECT * FROM `quiz_topics`");
-}
+} 
 else {
   header("Location: ../login.php");
 }
@@ -34,7 +34,7 @@ else {
   <div class="preloader">
     <div class="spinner"></div>
   </div>
-  
+
   <header class="header">
     <div class="left-side">
       <div class="logo">
@@ -77,7 +77,17 @@ else {
             <div class="quiz-card">
               <div class="quiz-lang-img">
                 <div class="img">
-                  <img src="../assets/images/Javascript.png" alt="quiz-lang-image">
+                  <?php
+                  if (!empty($fetchQuizes["langImages"])) {
+                  ?>
+                    <img src="../assets/languageImages/<?php echo $fetchQuizes["langImages"]; ?>" alt="quiz-lang-image">
+                  <?php
+                  } else {
+                  ?>
+                    <img src="../assets/images/default-lang-image.png" alt="default-lang-iamge">
+                  <?php
+                  }
+                  ?>
                 </div>
               </div>
 
@@ -99,7 +109,7 @@ else {
                 </div>
                 <div class="quiz-info-item">
                   <a href="./quiz.php?topic=<?php echo $fetchQuizes["topicUniqueId"]; ?>">Start Quiz</a>
-                </div>  
+                </div>
               </div>
             </div>
           <?php
