@@ -24,6 +24,11 @@ include "../assets/php/updateProfile.php";
 </head>
 
 <body>
+  <!-- Preloader -->
+  <div class="preloader">
+    <div class="spinner"></div>
+  </div>
+
   <header class="header">
     <div class="left-side">
       <div class="logo">
@@ -41,8 +46,8 @@ include "../assets/php/updateProfile.php";
       <div class="user">
         <span>My Account <i class="fi fi-rr-angle-small-down"></i></span>
         <ul class="user-menu">
-          <li><a href="./quizes.php">Quizes</a></li>
           <li><a href="./profile.php">My Profile</a></li>
+          <li><a href="./quizes.php">Quizes</a></li>
           <li class="active"><a href="./editprofile.php">Edit My Profile</a></li>
           <li><a href="./setting.php">Setting</a></li>
           <li><a href="../logout.php">Logout</a></li>
@@ -69,8 +74,7 @@ include "../assets/php/updateProfile.php";
                 ?>
                   <img src="../assets/StudentsProfileImages/<?php echo $fetchData["studentImage"]; ?>" style='width: 20rem; height: 20rem; object-fit: cover; border: 1rem solid #fff; text-align: center; border-radius: 50%; box-shadow: 0 5px 2rem rgba(0, 0, 0, 0.1); cursor: pointer;' class='profile-img'>
                 <?php
-                } 
-                else {
+                } else {
                 ?>
                   <img src='../assets/images/profile-user.png' style='width: 20rem; height: 20rem; object-fit: cover; text-align: center; border: 1rem solid #fff; border-radius: 50%; box-shadow: 0 5px 2rem rgba(0, 0, 0, 0.1); cursor: pointer;' class='profile-img'>"
                 <?php
@@ -138,6 +142,9 @@ include "../assets/php/updateProfile.php";
       </div>
     </div>
   </section>
+
+  <!-- JavaScript -->
+  <script src="../assets/js/script.js"></script>
 </body>
 
 </html>

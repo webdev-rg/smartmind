@@ -26,6 +26,13 @@ include "../assets/php/attemptedQuiz.php";
 </head>
 
 <body>
+
+  <!-- Preloader -->
+  <div class="preloader">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Header -->
   <header class="header">
     <div class="left-side">
       <div class="logo">
@@ -44,7 +51,7 @@ include "../assets/php/attemptedQuiz.php";
         <span>My Account <i class="fi fi-rr-angle-small-down"></i></span>
         <ul class="user-menu">
           <li class="active"><a href="./profile.php">My Profile</a></li>
-          <li><a href="./quizes.php">My Quizes</a></li>
+          <li><a href="./quizes.php">Quizes</a></li>
           <li><a href="./editprofile.php">Edit Profile</a></li>
           <li><a href="./setting.php">Setting</a></li>
           <li><a href="../logout.php">Logout</a></li>
@@ -53,6 +60,7 @@ include "../assets/php/attemptedQuiz.php";
     </div>
   </header>
 
+  <!-- Profile Section -->
   <section class="profile-container">
     <div class="container">
       <div class="profile-content">
@@ -145,6 +153,9 @@ include "../assets/php/attemptedQuiz.php";
       </div>
     </div>
   </section>
+
+  <!-- JavaScript -->
+  <script src="../assets/js/script.js"></script>
 </body>
 
 </html>

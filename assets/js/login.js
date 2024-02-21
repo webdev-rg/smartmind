@@ -15,7 +15,6 @@ const loginFormValidation = (e) => {
     password.focus();
   } 
   else {
-    // successMessage("Login Successful");
     loginBtn.setAttribute("type", "submit");
     setTimeout(() => {
       document.querySelector("form").submit();

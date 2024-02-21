@@ -29,6 +29,10 @@ include "./assets/php/resetPasword.php";
 </head>
 
 <body>
+  <!-- Preloader -->
+  <div class="preloader">
+    <div class="spinner"></div>
+  </div>
   <div class="main-container">
     <div class="container">
       <div class="inner-container">

@@ -4,13 +4,13 @@ include "../assets/php/connection.php";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
   if (isset($_POST["addQuestion"])) {
-    $selectedTopic = $_POST["topicList"];
+    $selectedTopic = isset($_POST["topicName"]) ? $_POST["topicName"] : "";
     $question = $_POST["question"];
     $option1 = $_POST["option1"];
     $option2 = $_POST["option2"];
     $option3 = $_POST["option3"];
     $option4 = $_POST["option4"];
-    $answer = $_POST["answer"];
+    $answer = $_POST["correctAnswer"];
     $marks = $_POST["marks"];
 
     $selectTopics = mysqli_query($connection, "SELECT `topicUniqueId` FROM `quiz_topics` WHERE `topic_name` = '$selectedTopic'");

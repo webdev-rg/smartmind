@@ -54,6 +54,43 @@ html {
 body {
   width: 100%;
   height: 100vh;
+  position: relative;
+}
+
+/* Preloader */
+.preloader {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--smart-mind-20);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s ease-in-out;
+}
+.preloader .spinner {
+  width: 6rem;
+  height: 6rem;
+  border: 5px solid var(--smart-mind-600);
+  border-radius: 50%;
+  border-bottom-color: var(--smart-mind-100);
+  animation: loader 0.8s linear infinite;
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: (360deg);
+  }
+}
+
+.preloader.hide-loader {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .main-container {
@@ -290,6 +327,7 @@ nav .logout-btn:hover span {
   height: calc(100% - 7rem);
   padding: 3%;
   background-color: var(--bg-color);
+  overflow: auto;
 }
 .inner-right-side .section {
   width: 100%;
@@ -336,18 +374,20 @@ nav .logout-btn:hover span {
   line-height: 1.6;
 }
 
-.inner-right-side .students h1 {
+.inner-right-side .section h1 {
   font-size: 2.8rem;
   font-weight: 600;
-  color: var(--text-color);
+  color: var(--smart-mind-700);
 }
+
+/* Students */
 
 .students .student-section {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 3%;
+  padding: 3% 0;
 }
 .student-section .student-container {
   width: 110rem;
@@ -413,4 +453,256 @@ nav .logout-btn:hover span {
 .student-items .stud-name,
 .student-items .stud-email {
   width: 25rem;
+}
+
+/* Add New Topic */
+
+.new-topic .new-topic-container {
+  width: 100%;
+  height: 100%;
+  padding: 3% 0;
+}
+.new-topic-container .new-topic-form {
+  width: 100%;
+  padding: 2rem;
+  background-color: var(--smart-mind-20);
+  box-shadow: 0 0 2.5rem rgba(0, 0, 0, 0.1);
+  border-radius: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.new-topic-form .topic-input-field {
+  width: 50rem;
+  height: 6rem;
+  position: relative;
+}
+.topic-input-field i {
+  position: absolute;
+  top: 50%;
+  left: 1.5rem;
+  font-size: 1.6rem;
+  color: var(--text-color);
+  transform: translateY(-50%);
+  z-index: 1;
+}
+.topic-input-field input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--smart-mind-20);
+  border: 2px solid var(--border-color);
+  border-radius: 1.5rem;
+  padding: 0 4.5rem;
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+.topic-input-field input::placeholder {
+  font-weight: normal;
+}
+.topic-input-field input:is(:focus, :valid) {
+  border-color: var(--smart-mind-700);
+}
+
+.new-topic-form .btn {
+  width: 15rem;
+  height: 5rem;
+}
+.btn input[type="submit"] {
+  width: 100%;
+  height: 100%;
+  background-color: var(--smart-mind-600);
+  border: 0;
+  border-radius: 1rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--smart-mind-20);
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+.btn input[type="submit"]:hover {
+  background-color: var(--smart-mind-700);
+}
+
+/* Add New Questions */
+
+.new-question .add-questions-container {
+  width: 100%;
+  padding: 3% 0;
+}
+.add-questions-container .question-form {
+  width: 100%;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem 2rem;
+  /* margin: 3% 0; */
+  background-color: var(--smart-mind-20);
+  border-radius: 1.5rem;
+}
+
+.question-form .topic-dropdown {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+.topic-dropdown .select-topic {
+  width: 100%;
+  height: 6rem;
+  border: 2px solid var(--border-color);
+  border-radius: 1rem;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.select-topic label {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--text-color);
+  letter-spacing: 0.4px;
+}
+.select-topic i {
+  font-size: 2rem;
+}
+
+.topic-dropdown .topicList {
+  width: 100%;
+  padding: 2rem;
+  border: 2px solid var(--border-color);
+  border-radius: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  display: none;
+}
+.topic-dropdown .topicList.open {
+  display: flex;
+}
+.topicList li {
+  width: 100%;
+  padding: 1.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+.topicList li input[type="radio"] {
+  appearance: none;
+  position: relative;
+  width: 1.8rem;
+  height: 1.8rem;
+  border: 2px solid var(--border-color);
+  border-radius: 0.4rem;
+}
+.topicList li input[type="radio"]::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1rem;
+  height: 1rem;
+  background-color: transparent;
+  border-radius: 0.2rem;
+}
+.topicList li input[type="radio"]:checked {
+  border-color: var(--smart-mind-700);
+}
+.topicList li input[type="radio"]:checked::before {
+  background-color: var(--smart-mind-700);
+}
+
+.topicList li label {
+  display: block;
+  width: 100%;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--text-color);
+  letter-spacing: 0.4px;
+  cursor: pointer;
+}
+
+.question-form .question-options {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.question-form .question-container {
+  width: 100%;;
+}
+.question-container label {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.question-container textarea {
+  width: 100%;
+  height: 10rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+  border: 2px solid var(--border-color);
+  border-radius: 1.5rem;
+  padding: 1rem;
+  margin-top: 1rem;
+  resize: none;
+}
+.question-container textarea:is(:focus, :valid) {
+  border-color: var(--smart-mind-700);
+}
+.question-container textarea::placeholder {
+  font-weight: normal;
+}
+
+.question-options .options-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.options-container .option-group {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.option-group .option-input {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.option-input label {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+.option-input input {
+  width: 100%;
+  height: 6rem;
+  border: 2px solid var(--border-color);
+  border-radius: 1rem;
+  padding: 0 1.5rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+.option-input input:is(:focus, :valid) {
+  border-color: var(--smart-mind-700);
+}
+.option-input input::placeholder {
+  font-weight: normal;
+}
+
+.question-form .btn {
+  width: 100%;
+  height: 5rem;
+}
+.btn input[type="submit"] {
+  width: 30rem;
+  height: 100%;
 }

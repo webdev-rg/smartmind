@@ -15,6 +15,6 @@ if (!empty($_SESSION['studentId'])) {
 }
 else
 {
-  header("Location: login.php"); // if not login student will be redirected to login page
+  header("Location: ../login.php"); // if not login student will be redirected to login page
 }
 ?>

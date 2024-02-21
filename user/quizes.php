@@ -1,6 +1,12 @@
 <?php
 include "../assets/php/connection.php";
-$selectQuizes = mysqli_query($connection, "SELECT * FROM `quiz_topics`");
+session_start();
+if(!empty($_SESSION['studentId'])) {
+  $selectQuizes = mysqli_query($connection, "SELECT * FROM `quiz_topics`");
+}
+else {
+  header("Location: ../login.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -24,6 +30,11 @@ $selectQuizes = mysqli_query($connection, "SELECT * FROM `quiz_topics`");
 </head>
 
 <body>
+  <!-- Preloader -->
+  <div class="preloader">
+    <div class="spinner"></div>
+  </div>
+  
   <header class="header">
     <div class="left-side">
       <div class="logo">
@@ -88,7 +99,7 @@ $selectQuizes = mysqli_query($connection, "SELECT * FROM `quiz_topics`");
                 </div>
                 <div class="quiz-info-item">
                   <a href="./quiz.php?topic=<?php echo $fetchQuizes["topicUniqueId"]; ?>">Start Quiz</a>
-                </div>
+                </div>  
               </div>
             </div>
           <?php

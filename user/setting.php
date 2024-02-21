@@ -25,6 +25,10 @@ include "../assets/php/changePassword.php";
 </head>
 
 <body>
+  <!-- Preloader -->
+  <div class="preloader">
+    <div class="spinner"></div>
+  </div>
 
   <div class="account-deletion">
     <div class="account-delete-form">
@@ -84,8 +88,8 @@ include "../assets/php/changePassword.php";
       <div class="user">
         <span>My Account <i class="fi fi-rr-angle-small-down"></i></span>
         <ul class="user-menu">
-          <li><a href="./quizes.php">Quizes</a></li>
           <li><a href="./profile.php">My Profile</a></li>
+          <li><a href="./quizes.php">Quizes</a></li>
           <li><a href="./editprofile.php">Edit My Profile</a></li>
           <li class="active"><a href="./setting.php">Setting</a></li>
           <li><a href="../logout.php">Logout</a></li>
