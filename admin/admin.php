@@ -29,6 +29,11 @@ $selectQuizes = mysqli_query($connection, "SELECT * FROM `quiz_topics`");
 </head>
 
 <body>
+  <!-- Preloader -->
+  <div class="preloader">
+    <div class="spinner"></div>
+  </div>
+
   <div class="main-container">
     <div class="container">
       <div class="left-side">
@@ -88,7 +93,7 @@ $selectQuizes = mysqli_query($connection, "SELECT * FROM `quiz_topics`");
               </div>
               <div class="admin-info">
                 <h2><?php echo $fetchData["adminFirstName"] . ' ' . $fetchData["adminLastName"]; ?></h2>
-                <p>Admin Unique Id</p>
+                <p><?php echo $fetchData["adminEmail"] ?></p>
               </div>
               <i class="fi fi-rr-angle-small-down"></i>
             </div>
@@ -114,20 +119,24 @@ $selectQuizes = mysqli_query($connection, "SELECT * FROM `quiz_topics`");
               </div>
               <div class="card">
                 <div class="icon">
-                  <img src="../assets/images/icons/admins.png" alt="ranking">
+                  <img src="../assets/images/icons/attemptedquiz.png" alt="ranking">
                 </div>
                 <div class="card-info">
-                  <h1>Admins</h1>
+                  <h1>Attempted Quiz</h1>
                 </div>
               </div>
               <div class="card">
                 <div class="icon">
-                  <img src="../assets/images/icons/topic.png" alt="ranking">
+                  <img src="../assets/images/icons/quiztopcis.png" alt="ranking">
                 </div>
                 <div class="card-info">
                   <h1>Quiz Topics</h1>
                 </div>
               </div>
+            </div>
+
+            <div class="dashboard-content">
+              
             </div>
           </div>
 
@@ -171,7 +180,8 @@ $selectQuizes = mysqli_query($connection, "SELECT * FROM `quiz_topics`");
 
             <div class="new-topic-container">
               <form action="#" method="post" class="new-topic-form" enctype="multipart/form-data">
-                <input type="file" name="langImage" id="langImage" accept="image/*">  
+                <label for="langImage">Select Language Logo</label>
+                <input type="file" name="langImage" id="langImage" accept="image/*">
                 <div class="topic-input-field">
                   <label for="newTopicName"><i class="fi fi-rr-poll-h"></i></label>
                   <input type="text" name="newTopicName" id="newTopicName" placeholder="Enter New Topic Name" required>
@@ -188,7 +198,7 @@ $selectQuizes = mysqli_query($connection, "SELECT * FROM `quiz_topics`");
             <h1>Add New Questions to Topics</h1>
 
             <div class="add-questions-container">
-              <form action="#" method="post" class="question-form" >
+              <form action="#" method="post" class="question-form">
                 <div class="topic-dropdown">
                   <div class="select-topic">
                     <label for="selectTopic">Select Topic</label>
@@ -211,7 +221,7 @@ $selectQuizes = mysqli_query($connection, "SELECT * FROM `quiz_topics`");
                     ?>
                   </ul>
                 </div>
-                
+
                 <div class="question-options">
                   <div class="question-container">
                     <label for="question">Question</label>
@@ -306,8 +316,8 @@ $selectQuizes = mysqli_query($connection, "SELECT * FROM `quiz_topics`");
         }
       })
     })
-    
   </script>
+  <script src="../assets/js/script.js"></script>
 </body>
 
 </html>

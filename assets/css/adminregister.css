@@ -59,7 +59,9 @@ body {
 
 /* Preloader */
 .preloader {
-  position: absolute;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   background-color: var(--smart-mind-20);
@@ -72,10 +74,11 @@ body {
 .preloader .spinner {
   width: 6rem;
   height: 6rem;
-  border: 4px solid var(--smart-mind-600);
+  border: 5px solid var(--smart-mind-950);
   border-radius: 50%;
-  border-bottom-color: var(--smart-mind-100);
-  animation: loader 0.5s linear infinite;
+  border-bottom-color: transparent;
+  border-top-color: transparent;
+  animation: loader 0.7s linear infinite;
 }
 
 @keyframes loader {

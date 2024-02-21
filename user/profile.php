@@ -9,7 +9,7 @@ include "../assets/php/attemptedQuiz.php";
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>
+  <title>SmartMind - 
     <?php echo $fetchData['firstName'] . ' ' . $fetchData['lastName']; ?>
   </title>
 
