@@ -336,18 +336,21 @@ nav .logout-btn:hover span {
 .inner-right-side .section {
   width: 100%;
   height: 100%;
+}
+
+.inner-right-side .section {
   display: none;
 }
 
 .inner-right-side .section.active {
   display: block;
 }
-.inner-right-side .dashboard {
+/* .inner-right-side .dashboard {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 3%;
-}
+} */
 .dashboard .dashboard-content {
   width: 100%;
   padding: 1.5rem;

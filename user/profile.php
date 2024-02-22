@@ -17,8 +17,8 @@ include "../assets/php/attemptedQuiz.php";
   <link rel="stylesheet" href="../assets/css/profile.css" />
 
   <!-- Favicon -->
-  <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
-  <link rel="shortcut icon" href="../assets/images/apple-touch-icon.png" type="image/x-icon">
+  <link rel="shortcut icon" href="../assets/StudentsProfileImages/<?php echo $fetchData["studentImage"]; ?>" type="image/x-icon">
+  <link rel="shortcut icon" href="../assets/StudentsProfileImages/<?php echo $fetchData["studentImage"]; ?>" type="image/x-icon">
 
   <!-- Icons CDN Link -->
   <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css" />
