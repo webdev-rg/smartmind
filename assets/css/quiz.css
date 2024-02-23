@@ -123,11 +123,11 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
-  display: none;
+  /* display: none; */
 }
-.quiz-container.active {
+/* .quiz-container.active {
   display: block;
-}
+} */
 
 .quiz-container .top {
   width: 100%;

@@ -9,7 +9,7 @@ if (!empty($_SESSION["studentId"])) {
   $result = mysqli_query($connection, $fetchQuestions);
 
   if ($result && mysqli_num_rows($result) > 0) {
-    $questions = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    $row = mysqli_fetch_assoc($result);
   }
 } else {
   header("Location: ../login.php");
@@ -23,7 +23,7 @@ mysqli_close($connection);
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quiz - <?php echo $questions[0]["topic_name"] ?></title>
+  <title>Quiz - <?php echo $row["topic_name"] ?></title>
 
   <!-- Css -->
   <link rel="stylesheet" href="../assets/css/quiz.css" />
@@ -46,68 +46,67 @@ mysqli_close($connection);
   <div class="main-container">
     <div class="container">
       <form action="#" method="post" class="quiz-form">
-        <?php if (!empty($questions)) { ?>
-          <?php $questionCount = count($questions); ?>
-          <?php for ($questionIndex = 0; $questionIndex < $questionCount; $questionIndex++) { ?>
-            <div class="quiz-container question-<?php echo $questionIndex + 1; ?>">
-              <div class="top">
-                <div class="title">
-                  <h2><?php echo $questions[$questionIndex]["topic_name"] ?></h2>
-                </div>
-                <div class="timer">
-                  <h2>30 : 00</h2>
-                </div>
+        <?php if (mysqli_num_rows($result) > 0) { ?>
+          <?php while($row = mysqli_fetch_assoc($result)) { ?>
+          <div class="quiz-container">
+            <div class="top">
+              <div class="title">
+                <h2><?php echo $row["topic_name"] ?></h2>
               </div>
-              <div class="quiz-content-wrapper">
-                <h1>Question <?php echo $questionIndex + 1; ?></h1>
-                <div class="question-container">
-                  <p><?php echo $questions[$questionIndex]["question"] ?></p>
-                </div>
-
-                <div class="options-container">
-                  <div class="option-group">
-                    <div class="option-field">
-                      <span>A</span>
-                      <label for="option<?php echo $questionIndex + 1; ?>_1">
-                        <input type="radio" name="option<?php echo $questionIndex + 1; ?>" id="option<?php echo $questionIndex + 1; ?>_1" value="<?php echo $questions[$questionIndex]["option1"]; ?>" hidden>
-                        <?php echo $questions[$questionIndex]["option1"]; ?>
-                      </label>
-                    </div>
-                    <div class="option-field">
-                      <span>B</span>
-                      <label for="option<?php echo $questionIndex + 1; ?>_2">
-                        <input type="radio" name="option<?php echo $questionIndex + 1; ?>" id="option<?php echo $questionIndex + 1; ?>_2" value="<?php echo $questions[$questionIndex]["option2"]; ?>" hidden>
-                        <?php echo $questions[$questionIndex]["option2"]; ?>
-                      </label>
-                    </div>
-                  </div>
-                  <div class="option-group">
-                    <div class="option-field">
-                      <span>C</span>
-                      <label for="option<?php echo $questionIndex + 1; ?>_3">
-                        <input type="radio" name="option<?php echo $questionIndex + 1; ?>" id="option<?php echo $questionIndex + 1; ?>_3" value="<?php echo $questions[$questionIndex]["option3"]; ?>" hidden>
-                        <?php echo $questions[$questionIndex]["option3"]; ?>
-                      </label>
-                    </div>
-                    <div class="option-field">
-                      <span>D</span>
-                      <label for="option<?php echo $questionIndex + 1; ?>_4">
-                        <input type="radio" name="option<?php echo $questionIndex + 1; ?>" id="option<?php echo $questionIndex + 1; ?>_4" value="<?php echo $questions[$questionIndex]["option4"]; ?>" hidden>
-                        <?php echo $questions[$questionIndex]["option4"]; ?>
-                      </label>
-                    </div>
-                  </div>
-                </div>
+              <div class="timer">
+                <h2>30 : 00</h2>
               </div>
-              <hr>
-              <?php if ($questionIndex !== $questionCount - 1) { ?>
-                <div class="submit-btn">
-                  <input type="button" name="nextQuestion" class="nextButton" value="Next" data-question="<?php echo $questionIndex + 1; ?>">
-                </div>
-              <?php } ?>
             </div>
+            <div class="quiz-content-wrapper">
+              <h1>Question 1</h1>
+              <div class="question-container">
+                <p><?php echo $row["question"] ?></p>
+              </div>
+
+              <div class="options-container">
+                <div class="option-group">
+                  <div class="option-field">
+                    <span>A</span>
+                    <label for="<?php echo $row["option1"] ?>">
+                      <input type="radio" name="option" id="<?php echo $row["option1"] ?>" value="<?php echo $row["option1"] ?>" hidden>
+                      <?php echo $row["option1"] ?>
+                    </label>
+                  </div>
+                  <div class="option-field">
+                    <span>B</span>
+                    <label for="<?php echo $row["option2"] ?>">
+                      <input type="radio" name="option" id="<?php echo $row["option2"] ?>" value="<?php echo $row["option2"] ?>" hidden>
+                      <?php echo $row["option2"] ?>
+                    </label>
+                  </div>
+                </div>
+                <div class="option-group">
+                  <div class="option-field">
+                    <span>C</span>
+                    <label for="<?php echo $row["option3"] ?>">
+                      <input type="radio" name="option" id="<?php echo $row["option3"] ?>" value="<?php echo $row["option3"] ?>" hidden>
+                      <?php echo $row["option3"] ?>
+                    </label>
+                  </div>
+                  <div class="option-field">
+                    <span>D</span>
+                    <label for="<?php echo $row["option4"] ?>">
+                      <input type="radio" name="option" id="<?php echo $row["option4"] ?>" value="<?php echo $row["option4"] ?>" hidden>
+                      <?php echo $row["option4"] ?>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr>
+            <div class="submit-btn">
+              <input type="button" name="nextQuestion" class="nextButton" value="Next">
+            </div>
+          </div>
           <?php } ?>
-        <?php } else { ?>
+        <?php
+        } else {
+        ?>
           <h1>No Questions in this quiz</h1>
         <?php } ?>
       </form>
@@ -115,31 +114,6 @@ mysqli_close($connection);
   </div>
 
   <script src="../assets/js/script.js"></script>
-  <script>
-    const quizContents = document.querySelectorAll(".quiz-container");
-    const nextButtons = document.querySelectorAll(".nextButton");
-
-    quizContents[0].classList.add("active");
-
-    let currentQuestion = 1;
-
-    nextButtons.forEach(button => {
-      button.addEventListener("click", () => {
-        quizContents[currentQuestion - 1].classList.remove("active");
-        currentQuestion++;
-        if (currentQuestion <= quizContents.length) {
-          quizContents[currentQuestion - 1].classList.add("active");
-        }
-      });
-    });
-
-    // Optionally, you can hide all questions initially and display the first one.
-    quizContents.forEach((content, index) => {
-      if (index !== 0) {
-        content.classList.remove("active");
-      }
-    });
-  </script>
 </body>
 
 </html>

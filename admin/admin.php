@@ -71,7 +71,7 @@ $selectQuizes = mysqli_query($connection, "SELECT * FROM `quiz_topics`");
               </ul>
             </div>
             <div class="logout-btn">
-              <a href="../logout.php">
+              <a href="./adminlogout.php">
                 <div class="icon">
                   <img src="../assets/images/icons/logout.png" alt="logout-icon">
                 </div>
@@ -109,7 +109,7 @@ $selectQuizes = mysqli_query($connection, "SELECT * FROM `quiz_topics`");
           <!-- Dashboard -->
           <div class="dashboard section active">
             <div class="cards">
-              <div class="card">
+              <div class="card dashboardTab">
                 <div class="icon">
                   <img src="../assets/images/icons/ranking.png" alt="ranking">
                 </div>
@@ -117,7 +117,7 @@ $selectQuizes = mysqli_query($connection, "SELECT * FROM `quiz_topics`");
                   <h1>Ranking</h1>
                 </div>
               </div>
-              <div class="card">
+              <div class="card dashboardTab">
                 <div class="icon">
                   <img src="../assets/images/icons/attemptedquiz.png" alt="ranking">
                 </div>
@@ -125,7 +125,7 @@ $selectQuizes = mysqli_query($connection, "SELECT * FROM `quiz_topics`");
                   <h1>Attempted Quiz</h1>
                 </div>
               </div>
-              <div class="card">
+              <div class="card dashboardTab">
                 <div class="icon">
                   <img src="../assets/images/icons/quiztopcis.png" alt="ranking">
                 </div>
@@ -136,7 +136,81 @@ $selectQuizes = mysqli_query($connection, "SELECT * FROM `quiz_topics`");
             </div>
 
             <div class="dashboard-content">
-              
+              <div class="content">
+                <h1>Ranking</h1>
+              </div>
+              <div class="content">
+                <h1>Attempted Quiz</h1>
+              </div>
+              <div class="all-quizes content active">
+                <h1>All Quizes</h1>
+                <div class="quiz-topics">
+                  <div class="topics-card">
+                    <?php
+                    if (mysqli_num_rows($selectQuizes) > 0) {
+                      while ($fetchQuizes = mysqli_fetch_assoc($selectQuizes)) {
+                    ?>
+                        <div class="quiz-card">
+                          <div class="quiz-lang-img">
+                            <div class="img">
+                              <?php
+                              if (!empty($fetchQuizes["langImages"])) {
+                              ?>
+                                <img src="../assets/languageImages/<?php echo $fetchQuizes["langImages"]; ?>" alt="quiz-lang-image">
+                              <?php
+                              } else {
+                              ?>
+                                <img src="../assets/images/default-lang-image.png" alt="default-lang-iamge">
+                              <?php
+                              }
+                              ?>
+                            </div>
+                          </div>
+
+                          <div class="quiz-info-wrapper">
+                            <div class="quiz-info-item">
+                              <h5><?php echo $fetchQuizes["topic_name"]; ?></h5>
+                            </div>
+                            <div class="quiz-info-item">
+                              <span class="quiz-info-item-label">Questions: </span>
+                              <span class="quiz-info-item-value">
+                                <?php
+                                if (empty($fetchQuizes["questions"])) {
+                                  echo "0";
+                                } else {
+                                  echo $fetchQuizes["questions"];
+                                }
+                                ?>
+                              </span>
+                            </div>
+                            <div class="quiz-info-item">
+                              <span class="quiz-info-item-label">Marks: </span>
+                              <span class="quiz-info-item-value">
+                                <?php
+                                if (empty($fetchQuizes["marks"])) {
+                                  echo "0";
+                                } else {
+                                  echo $fetchQuizes["marks"];
+                                }
+                                ?>
+                              </span>
+                            </div>
+                            <div class="quiz-info-item">
+                              <a href="./viewquestions.php?topic=<?php echo $fetchQuizes["topicUniqueId"]; ?>">View Questions</a>
+                            </div>
+                          </div>
+                        </div>
+                      <?php
+                      }
+                    } else {
+                      ?>
+                      <h2>No Quizes</h2>
+                    <?php
+                    }
+                    ?>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -316,6 +390,22 @@ $selectQuizes = mysqli_query($connection, "SELECT * FROM `quiz_topics`");
         }
       })
     })
+
+    const dashboardTabs = document.querySelectorAll(".dashboardTab");
+    const dashboardContents = document.querySelectorAll(".content");
+
+    dashboardTabs.forEach((tab, index) => {
+      tab.addEventListener("click", () => {
+        dashboardContents.forEach((content) => {
+          content.classList.remove("active");
+        });
+        dashboardTabs.forEach((tab) => {
+          tab.classList.remove("active");
+        });
+        dashboardContents[index].classList.add("active");
+        dashboardTabs[index].classList.add("active");
+      });
+    });
   </script>
   <script src="../assets/js/script.js"></script>
 </body>

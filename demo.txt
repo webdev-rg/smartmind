@@ -124,7 +124,7 @@ $getAllQuizes = mysqli_query($connection, "SELECT * FROM `quiz_topics`");
         <?php } else { ?>
           <h1>No Questions in this quiz</h1>
         <?php } ?>
-      </form>
+</form>
 
 
 
