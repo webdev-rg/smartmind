@@ -6,6 +6,7 @@ include "../assets/php/admin/addQuestion.php";
 include "../assets/php/connection.php";
 $selectQuery = mysqli_query($connection, "SELECT * FROM `students`");
 $selectQuizes = mysqli_query($connection, "SELECT * FROM `quiz_topics`");
+$selectTopicName = mysqli_query($connection, "SELECT * FROM `quiz_topics`");
 ?>
 
 <!DOCTYPE html>
@@ -230,14 +231,14 @@ $selectQuizes = mysqli_query($connection, "SELECT * FROM `quiz_topics`");
 
                 <?php
                 if (mysqli_num_rows($selectQuery) > 0) {
-                  while ($row = mysqli_fetch_assoc($selectQuery)) {
+                  while ($student = mysqli_fetch_assoc($selectQuery)) {
                 ?>
                     <ul class="student-items">
-                      <li class="stud-name"><?php echo $row["firstName"] . ' ' . $row["lastName"] ?></li>
-                      <li class="stud-uid"><?php echo $row["studentUniqueId"] ?></li>
-                      <li class="stud-email"><?php echo $row["email"] ?></li>
-                      <li class="stud-username"><?php echo $row["username"] ?></li>
-                      <li class="stud-gender"><?php echo $row["gender"] ?></li>
+                      <li class="stud-name"><?php echo $student["firstName"] . ' ' . $student["lastName"] ?></li>
+                      <li class="stud-uid"><?php echo $student["studentUniqueId"] ?></li>
+                      <li class="stud-email"><?php echo $student["email"] ?></li>
+                      <li class="stud-username"><?php echo $student["username"] ?></li>
+                      <li class="stud-gender"><?php echo $student["gender"] ?></li>
                     </ul>
                 <?php
                   }
@@ -281,18 +282,14 @@ $selectQuizes = mysqli_query($connection, "SELECT * FROM `quiz_topics`");
                   </div>
 
                   <ul class="topicList">
-                    <?php
-                    if (mysqli_num_rows($selectQuizes) > 0) {
-                      while ($row = mysqli_fetch_assoc($selectQuizes)) {
-                    ?>
+                    <?php if (mysqli_num_rows($selectTopicName) > 0) { ?>
+                      <?php while ($topicName = mysqli_fetch_assoc($selectTopicName)) { ?>
                         <li>
-                          <input type="radio" name="topicName" id="<?php echo $row["topic_name"] ?>" class="topicName" value="<?php echo $row["topic_name"] ?>">
-                          <label for="<?php echo $row["topic_name"] ?>"><?php echo $row["topic_name"] ?></label>
+                          <input type="radio" name="topicName" id="<?php echo $topicName["topic_name"] ?>" class="topicName" value="<?php echo $topicName["topic_name"] ?>">
+                          <label for="<?php echo $topicName["topic_name"] ?>"><?php echo $topicName["topic_name"] ?></label>
                         </li>
-                    <?php
-                      }
-                    }
-                    ?>
+                      <?php } ?>
+                    <?php } ?>
                   </ul>
                 </div>
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 23, 2024 at 05:51 PM
+-- Generation Time: Feb 26, 2024 at 02:41 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -122,7 +122,17 @@ INSERT INTO `quiz_questions` (`id`, `topic_unique_id`, `topic_name`, `question`,
 (17, 'XDONyJzAZMTR', 'CSS', 'What does the CSS property display: flex; do?', 'Makes the element inline', 'Enables the element to be a block-level container', 'Defines a flex container and enables a flex context for all its direct children', 'Sets the element as a table', 'Defines a flex container and enables a flex context for all its direct children', '2'),
 (18, 'XDONyJzAZMTR', 'CSS', 'What is the CSS mix-blend-mode property used for?', 'Adjusting the brightness of an element', 'Blending the color of an element with its background', 'Mixing two background images', 'Modifying the opacity of an element', 'Blending the color of an element with its background', '2'),
 (19, 'XDONyJzAZMTR', 'CSS', 'What is the purpose of the CSS flex-grow property?', 'Determines the size of a flex item', 'Specifies the maximum size of a flex item', 'Controls the growth of a flex containers children', 'Adjusts the spacing between flex items', 'Controls the growth of a flex containers children', '2'),
-(20, 'XDONyJzAZMTR', 'CSS', 'Which CSS feature allows for the creation of complex shapes and layouts with non-rectangular, or even curved, shapes?', 'CSS Transforms', 'CSS Shapes', 'CSS Grid Layout', 'CSS Flexbox', 'CSS Shapes', '2');
+(20, 'XDONyJzAZMTR', 'CSS', 'Which CSS feature allows for the creation of complex shapes and layouts with non-rectangular, or even curved, shapes?', 'CSS Transforms', 'CSS Shapes', 'CSS Grid Layout', 'CSS Flexbox', 'CSS Shapes', '2'),
+(21, 'mY3uDxbX9425', 'JavaScript', 'Which keyword is used to declare a variable in JavaScript?', 'let', 'const', 'var', 'variable', 'var', '2'),
+(22, 'mY3uDxbX9425', 'JavaScript', 'What is the purpose of the typeof operator in JavaScript?', 'To check if a variable is defined', 'To determine the type of a variable or expression', 'To create a new variable', 'To compare two values', 'To determine the type of a variable or expression', '2'),
+(23, 'mY3uDxbX9425', 'JavaScript', 'What is the purpose of the this keyword in JavaScript?', 'Refers to the current function', 'Refers to the current instance of an object', 'Refers to the global object', 'Refers to the parent object', 'Refers to the current instance of an object', '2'),
+(24, 'mY3uDxbX9425', 'JavaScript', 'Which method is used to add an element at the end of an array in JavaScript?', 'append()', 'add()', 'push()', 'insert()', 'push()', '2'),
+(25, 'mY3uDxbX9425', 'JavaScript', 'What is the difference between == and === in JavaScript?', 'They are interchangeable and have the same meaning', '== performs a strict equality check, while === performs type coercion', 'They both perform a shallow comparison of objects', '=== performs a strict equality check, while == performs type coercion', '=== performs a strict equality check, while == performs type coercion', '2'),
+(26, 'mY3uDxbX9425', 'JavaScript', 'What is the purpose of the async keyword in JavaScript?', 'It indicates that the function should be executed asynchronously', 'It specifies that the function returns a Promise', 'It defines a function as an asynchronous function', 'It declares a variable as asynchronous', 'It defines a function as an asynchronous function', '2'),
+(27, 'mY3uDxbX9425', 'JavaScript', 'How does the let keyword differ from var in JavaScript?', 'let is block-scoped, while var is function-scoped', 'let is function-scoped, while var is block-scoped', 'There is no difference between let and var', 'let is used for global variables, while var is used for local variables', 'let is block-scoped, while var is function-scoped', '2'),
+(28, 'mY3uDxbX9425', 'JavaScript', 'What is the purpose of the JavaScript map function?', 'To create a new array with the results of calling a provided function on every element in the array', 'To filter elements in an array based on a provided function', 'To reduce an array to a single value', 'To iterate over the elements of an array', 'To create a new array with the results of calling a provided function on every element in the array', '2'),
+(29, 'mY3uDxbX9425', 'JavaScript', 'How does the JavaScript async/await syntax simplify asynchronous code?', 'It replaces callbacks with synchronous code', 'It automatically handles errors in asynchronous code', 'It allows asynchronous code to be written in a more synchronous style', 'It prevents the execution of multiple asynchronous operations simultaneously', 'It allows asynchronous code to be written in a more synchronous style', '2'),
+(30, 'mY3uDxbX9425', 'JavaScript', 'What is the concept of \"hoisting\" in JavaScript?', 'It refers to the process of moving all variable declarations to the top of the code', 'It is a way to prioritize certain functions over others', 'It allows variables to be declared after they are used', 'It is a technique for optimizing code execution', 'It refers to the process of moving all variable declarations to the top of the code', '2');
 
 -- --------------------------------------------------------
 
@@ -147,9 +157,10 @@ CREATE TABLE `quiz_topics` (
 INSERT INTO `quiz_topics` (`topic_id`, `topicUniqueId`, `langImages`, `topic_name`, `questions`, `marks`, `quiz_time`) VALUES
 (1, 'sI0M15UO0sKc', 'icons8-html-5-50.png', 'Html 5', '10', '20', ''),
 (2, 'XDONyJzAZMTR', 'icons8-css-48.png', 'CSS', '10', '20', ''),
-(3, 'mY3uDxbX9425', 'Javascript.png', 'JavaScript', '', '', ''),
+(3, 'mY3uDxbX9425', 'Javascript.png', 'JavaScript', '10', '20', ''),
 (4, 'LiZGngXaTKs5', 'Java.png', 'Java', '', '', ''),
-(5, 'ZOyskewcj714', '', 'Php', '', '', '');
+(5, 'ZOyskewcj714', '', 'Php', '', '', ''),
+(6, 'eLnhFhpylGrt', '', 'Go', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -251,13 +262,13 @@ ALTER TABLE `changepasswordtoken`
 -- AUTO_INCREMENT for table `quiz_questions`
 --
 ALTER TABLE `quiz_questions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `quiz_topics`
 --
 ALTER TABLE `quiz_topics`
-  MODIFY `topic_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `topic_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `students`

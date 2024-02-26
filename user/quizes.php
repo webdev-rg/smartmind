@@ -3,8 +3,7 @@ include "../assets/php/connection.php";
 session_start();
 if (!empty($_SESSION['studentId'])) {
   $selectQuizes = mysqli_query($connection, "SELECT * FROM `quiz_topics`");
-} 
-else {
+} else {
   header("Location: ../login.php");
 }
 ?>
@@ -97,16 +96,32 @@ else {
                 </div>
                 <div class="quiz-info-item">
                   <span class="quiz-info-item-label">Questions: </span>
-                  <span class="quiz-info-item-value"><?php echo $fetchQuizes["questions"]; ?></span>
+                  <span class="quiz-info-item-value">
+                    <?php
+                    if (empty($fetchQuizes["questions"])) {
+                      echo "0";
+                    } else {
+                      echo $fetchQuizes["questions"];
+                    }
+                    ?>
+                  </span>
                 </div>
                 <div class="quiz-info-item">
                   <span class="quiz-info-item-label">Marks: </span>
-                  <span class="quiz-info-item-value"><?php echo $fetchQuizes["marks"]; ?></span>
+                  <span class="quiz-info-item-value">
+                    <?php
+                    if (empty($fetchQuizes["marks"])) {
+                      echo "0";
+                    } else {
+                      echo $fetchQuizes["marks"];
+                    }
+                    ?>
+                  </span>
                 </div>
-                <div class="quiz-info-item">
+                <!-- <div class="quiz-info-item">
                   <span class="quiz-info-item-label">Time: </span>
                   <span class="quiz-info-item-value"><?php echo $fetchQuizes["quiz_time"]; ?></span>
-                </div>
+                </div> -->
                 <div class="quiz-info-item">
                   <a href="./quiz.php?topic=<?php echo $fetchQuizes["topicUniqueId"]; ?>">Start Quiz</a>
                 </div>

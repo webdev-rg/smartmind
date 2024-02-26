@@ -18,8 +18,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if ($selectTopics) {
       // Check if any rows were returned
       if (mysqli_num_rows($selectTopics) > 0) {
-        $row = mysqli_fetch_assoc($selectTopics);
-        $topicId = $row["topicUniqueId"];
+        $uniqueId = mysqli_fetch_assoc($selectTopics);
+        $topicId = $uniqueId["topicUniqueId"];
 
         // Inserting new questions
         $insertQuestion = mysqli_query($connection, "INSERT INTO `quiz_questions`(`topic_unique_id`, `topic_name`, `question`, `option1`, `option2`, `option3`, `option4`, `answer`, `marks`)

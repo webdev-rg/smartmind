@@ -398,6 +398,7 @@ body {
 .quizes-content .no-quiz-attempted {
   width: 100%;
   padding: 2rem;
+  background-color: var(--smart-mind-20);
   border: 1px solid var(--border-color);
   border-radius: 1.5rem;
   display: flex;

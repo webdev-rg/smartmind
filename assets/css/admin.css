@@ -702,7 +702,7 @@ nav .logout-btn:hover span {
   gap: 1rem;
   display: none;
 }
-.topic-dropdown .topicList.open {
+.topicList.open {
   display: flex;
 }
 .topicList li {
