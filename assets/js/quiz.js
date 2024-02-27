@@ -16,7 +16,6 @@ const validateQuiz = (index) => {
   });
 
   if (!checked) {
-    // alert("Please select an answer before moving to the next question.");
     warningMessage("Please select any one option");
   } 
   else {
