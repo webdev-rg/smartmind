@@ -198,7 +198,11 @@ body {
   gap: 2rem;
   padding: 0 0 0 1.5rem;
 }
-/* .option-field.act */
+
+.option-field input[type="radio"]:checked {
+  border-color: var(--smart-mind-700);
+}
+
 .option-field span {
   width: 3.5rem;
   height: 3.5rem;

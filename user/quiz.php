@@ -59,7 +59,7 @@ mysqli_close($connection);
               <h2><?php echo $questions[0]["topic_name"] ?></h2>
             </div>
             <div class="timer">
-              <h2>30 : 00</h2>
+              <h2 id="timer"></h2>
             </div>
           </div>
           <!-- First Question -->
