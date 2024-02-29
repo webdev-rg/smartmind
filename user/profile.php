@@ -118,13 +118,13 @@ include "../assets/php/attemptedQuiz.php";
                 <div class="profile-skills-item">
                   <h2><?php echo $row["quiz_topic_name"]; ?></h2>
                 </div>
-                <div class="profile-skills-item">
+                <!-- <div class="profile-skills-item">
                   <span class="profile-skills-item-label">Time Taken: </span>
                   <span class="profile-skills-item-value"><?php echo $row["time_taken"]; ?></span>
-                </div>
+                </div> -->
                 <div class="profile-skills-item">
-                  <span class="profile-skills-item-label">Rating: </span>
-                  <span class="profile-skills-item-value"><?php echo $row["rating"]; ?></span>
+                  <span class="profile-skills-item-label">Level: </span>
+                  <span class="profile-skills-item-value"><?php echo $row["level"]; ?></span>
                 </div>
                 <div class="profile-skills-item">
                   <span class="profile-skills-item-label">Score: </span>
@@ -132,14 +132,14 @@ include "../assets/php/attemptedQuiz.php";
                 </div>
                 <div class="profile-skills-item">
                   <span class="profile-skills-item-label">Result: </span>
-                  <span class="profile-skills-item-value"><?php echo ["result"]; ?></span>
+                  <span class="profile-skills-item-value"><?php echo $row["result"]; ?></span>
                 </div>
               </div>
 
+            </div>
             <?php
           }
             ?>
-            </div>
           <?php
         } else {
           ?>

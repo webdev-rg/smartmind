@@ -334,11 +334,11 @@ body {
 }
 .quizes-content .quiz-container {
   width: 100%;
-  padding: 2rem;
+  padding: 3.5rem 4rem;
   border: 1px solid var(--border-color);
   border-radius: 1.5rem;
   display: flex;
-  gap: 2.2rem;
+  gap: 4rem;
 }
 .quiz-container .lang-image-container {
   width: 8rem;
@@ -371,7 +371,7 @@ body {
 }
 .quiz-attempted-info h2 {
   font-size: 2.2rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.4px;
   color: var(--text-color);
   margin-bottom: 0.5rem;
@@ -379,7 +379,7 @@ body {
 .quiz-attempted-info .profile-skills-item {
   display: flex;
   align-items: center;
-  gap: 0.7rem;
+  gap: 0.9rem;
 }
 .profile-skills-item .profile-skills-item-label {
   font-size: 1.5rem;
