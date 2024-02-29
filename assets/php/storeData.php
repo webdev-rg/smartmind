@@ -93,7 +93,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     echo '<script>
     setTimeout(() => {
-      window.location.replace("registerSuccess.html");
+      window.location.replace("/smartmind/registerSuccess.html");
     }, 2000);
     </script>';
   }

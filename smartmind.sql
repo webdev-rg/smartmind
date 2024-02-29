@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 27, 2024 at 05:47 AM
+-- Generation Time: Feb 29, 2024 at 03:20 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -52,12 +52,22 @@ INSERT INTO `admin` (`adminId`, `adminFirstName`, `adminLastName`, `adminEmail`,
 CREATE TABLE `attempted_quiz` (
   `id` int(11) NOT NULL,
   `studentId` int(11) NOT NULL,
+  `student_name` varchar(255) NOT NULL,
+  `topic_unique_id` varchar(255) NOT NULL,
   `quiz_topic_name` varchar(255) NOT NULL,
   `time_taken` varchar(100) NOT NULL,
-  `rating` varchar(100) NOT NULL,
+  `level` varchar(100) NOT NULL,
   `score` int(11) NOT NULL,
   `result` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `attempted_quiz`
+--
+
+INSERT INTO `attempted_quiz` (`id`, `studentId`, `student_name`, `topic_unique_id`, `quiz_topic_name`, `time_taken`, `level`, `score`, `result`) VALUES
+(1, 1, 'Rushikesh Ghodke', 'sI0M15UO0sKc', 'Html 5', '', '', 10, ''),
+(2, 1, 'Rushikesh Ghodke', 'sI0M15UO0sKc', 'Html 5', '', '', 16, '');
 
 -- --------------------------------------------------------
 
@@ -84,101 +94,40 @@ INSERT INTO `changepasswordtoken` (`id`, `student_id`, `verificationToken`, `tok
 --
 -- Table structure for table `css_quiz`
 --
-
-CREATE TABLE `css_quiz` (
-  `id` int(11) NOT NULL,
-  `topic_name` varchar(255) NOT NULL,
-  `question` varchar(255) NOT NULL,
-  `option1` varchar(255) NOT NULL,
-  `option2` varchar(255) NOT NULL,
-  `option3` varchar(255) NOT NULL,
-  `option4` varchar(255) NOT NULL,
-  `answer` varchar(255) NOT NULL,
-  `marks` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+-- Error reading structure for table smartmind.css_quiz: #1030 - Got error 194 &quot;Tablespace is missing for a table&quot; from storage engine InnoDB
+-- Error reading data for table smartmind.css_quiz: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near &#039;FROM `smartmind`.`css_quiz`&#039; at line 1
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `html_quiz`
 --
-
-CREATE TABLE `html_quiz` (
-  `id` int(11) NOT NULL,
-  `topic_name` varchar(255) NOT NULL,
-  `question` varchar(255) NOT NULL,
-  `option1` varchar(255) NOT NULL,
-  `option2` varchar(255) NOT NULL,
-  `option3` varchar(255) NOT NULL,
-  `option4` varchar(255) NOT NULL,
-  `answer` varchar(255) NOT NULL,
-  `marks` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `html_quiz`
---
-
-INSERT INTO `html_quiz` (`id`, `topic_name`, `question`, `option1`, `option2`, `option3`, `option4`, `answer`, `marks`) VALUES
-(1, 'Html 5', 'What does HTML stand for?', 'High-level Textual Markup Language', 'Hyperlink and Text Management Language', 'HyperText Markup Language', 'Hyper Transfer Markup Language', 'HyperText Markup Language', '2'),
-(2, 'Html 5', 'What does the \"DOCTYPE\" declaration in HTML do?', 'It specifies the background color of the page.', 'It creates a new HTML document.', 'It declares a function in JavaScript.', 'It defines the document type and version of HTML.', 'It defines the document type and version of HTML.', '2'),
-(3, 'Html 5', 'Which HTML element is used to create a hyperlink?', 'link', '<href>', '<a>', '<p>', '<a>', '2'),
-(4, 'Html 5', 'What does the \"alt\" attribute in the <img> tag provide?', 'It defines the alignment of the image.', 'It specifies the source URL of the image.', 'It provides alternative text for the image.', 'It sets the width of the image.', 'It provides alternative text for the image.', '2'),
-(5, 'Html 5', 'Which tag is used to define an ordered list in HTML?', '<ul>', '<li>', '<ol>', '<dl>', '<ol>', '2');
+-- Error reading structure for table smartmind.html_quiz: #1030 - Got error 194 &quot;Tablespace is missing for a table&quot; from storage engine InnoDB
+-- Error reading data for table smartmind.html_quiz: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near &#039;FROM `smartmind`.`html_quiz`&#039; at line 1
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `java_quiz`
 --
-
-CREATE TABLE `java_quiz` (
-  `id` int(11) NOT NULL,
-  `topic_name` varchar(255) NOT NULL,
-  `question` varchar(255) NOT NULL,
-  `option1` varchar(255) NOT NULL,
-  `option2` varchar(255) NOT NULL,
-  `option3` varchar(255) NOT NULL,
-  `option4` varchar(255) NOT NULL,
-  `answer` varchar(255) NOT NULL,
-  `marks` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+-- Error reading structure for table smartmind.java_quiz: #1030 - Got error 194 &quot;Tablespace is missing for a table&quot; from storage engine InnoDB
+-- Error reading data for table smartmind.java_quiz: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near &#039;FROM `smartmind`.`java_quiz`&#039; at line 1
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `js_quiz`
 --
-
-CREATE TABLE `js_quiz` (
-  `id` int(11) NOT NULL,
-  `topic_name` varchar(255) NOT NULL,
-  `question` varchar(255) NOT NULL,
-  `option1` varchar(255) NOT NULL,
-  `option2` varchar(255) NOT NULL,
-  `option3` varchar(255) NOT NULL,
-  `option4` varchar(255) NOT NULL,
-  `answer` varchar(255) NOT NULL,
-  `marks` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+-- Error reading structure for table smartmind.js_quiz: #1030 - Got error 194 &quot;Tablespace is missing for a table&quot; from storage engine InnoDB
+-- Error reading data for table smartmind.js_quiz: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near &#039;FROM `smartmind`.`js_quiz`&#039; at line 1
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `python_quiz`
 --
-
-CREATE TABLE `python_quiz` (
-  `id` int(11) NOT NULL,
-  `topic_name` varchar(255) NOT NULL,
-  `question` varchar(255) NOT NULL,
-  `option1` varchar(255) NOT NULL,
-  `option2` varchar(255) NOT NULL,
-  `option3` varchar(255) NOT NULL,
-  `option4` varchar(255) NOT NULL,
-  `answer` varchar(255) NOT NULL,
-  `marks` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+-- Error reading structure for table smartmind.python_quiz: #1030 - Got error 194 &quot;Tablespace is missing for a table&quot; from storage engine InnoDB
+-- Error reading data for table smartmind.python_quiz: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near &#039;FROM `smartmind`.`python_quiz`&#039; at line 1
 
 -- --------------------------------------------------------
 
@@ -214,8 +163,8 @@ INSERT INTO `quiz_questions` (`id`, `topic_unique_id`, `topic_name`, `question`,
 (8, 'sI0M15UO0sKc', 'Html 5', 'Which HTML5 attribute is used to provide a short hint that describes the expected value of an input field?', 'hint', 'placeholder', 'description', 'tooltip', 'placeholder', '2'),
 (9, 'sI0M15UO0sKc', 'Html 5', 'What is the purpose of the HTML details and summary elements?', 'To define a dropdown menu', 'To create an accordion-style interface', 'To display details that can be toggled open or closed', 'To define a summary for an HTML document', 'To display details that can be toggled open or closed', '2'),
 (10, 'sI0M15UO0sKc', 'Html 5', 'In HTML, what does the defer attribute do when included in a script tag?', 'Specifies that the script should be executed in the background', 'Defers the execution of the script until the page is fully loaded', 'Delays the loading of the script until after the page has been parsed', 'Declares the script as deferred and asynchronous', 'Delays the loading of the script until after the page has been parsed', '2'),
-(11, 'XDONyJzAZMTR', 'CSS', 'How can you include an external CSS file in an HTML document?', 'style src=\'styles.css\'', 'link rel=\'stylesheet\' type=\'text/css\' href=\'styles.css\'', 'include src=\'styles.css\'', 'css href=\'styles.css\'', 'link rel=\'stylesheet\' type=\'text/css\' href=\'styles.css\'', '2'),
-(12, 'XDONyJzAZMTR', 'CSS', 'Which CSS property is used to control the space between the elements border and content?', 'margin property', 'padding property', 'spacing', 'border-spacing', 'padding', '2'),
+(11, 'XDONyJzAZMTR', 'CSS', 'How can you include an external CSS file in an HTML document?', 'style src=\"styles.css\"', 'link rel=\"stylesheet\" type=\"text/css\" href=\"styles.css\"', 'include src=\"styles.css\"', 'css href=\"styles.css\"', 'link rel=\"stylesheet\" type=\"text/css\" href=\"styles.css\"', '2'),
+(12, 'XDONyJzAZMTR', 'CSS', 'Which CSS property is used to control the space between the elements border and content?', 'margin property', 'padding property', 'spacing', 'border-spacing', 'padding property', '2'),
 (13, 'XDONyJzAZMTR', 'CSS', 'What is the CSS property used for changing the color of the text?', 'font-color', 'text-color', 'color', 'text-style', 'color', '2'),
 (14, 'XDONyJzAZMTR', 'CSS', 'Which CSS selector targets all the <p> elements that are children of the element with id \"container\"?', '#container > p', '#container p', '.container > p', '.container p', '#container p', '2'),
 (15, 'XDONyJzAZMTR', 'CSS', 'Which CSS property is used to create rounded corners?', 'corner-radius', 'border-radius', 'rounding', 'curve-border', 'border-radius', '2'),
@@ -320,36 +269,6 @@ ALTER TABLE `changepasswordtoken`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `css_quiz`
---
-ALTER TABLE `css_quiz`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `html_quiz`
---
-ALTER TABLE `html_quiz`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `java_quiz`
---
-ALTER TABLE `java_quiz`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `js_quiz`
---
-ALTER TABLE `js_quiz`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `python_quiz`
---
-ALTER TABLE `python_quiz`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `quiz_questions`
 --
 ALTER TABLE `quiz_questions`
@@ -381,43 +300,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `attempted_quiz`
 --
 ALTER TABLE `attempted_quiz`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `changepasswordtoken`
 --
 ALTER TABLE `changepasswordtoken`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `css_quiz`
---
-ALTER TABLE `css_quiz`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `html_quiz`
---
-ALTER TABLE `html_quiz`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `java_quiz`
---
-ALTER TABLE `java_quiz`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `js_quiz`
---
-ALTER TABLE `js_quiz`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `python_quiz`
---
-ALTER TABLE `python_quiz`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `quiz_questions`

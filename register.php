@@ -22,7 +22,7 @@ include "./assets/php/storeData.php";
   <!-- Preloader -->
   <div class="preloader">
     <div class="spinner"></div>
-  </div>
+  </div> 
 
   <div class="main-container">
     <div class="left-container">
@@ -219,11 +219,11 @@ include "./assets/php/storeData.php";
   </div>
 
   <!-- jQuery CDN -->
-  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script type="module" src="./assets/js/registerFormValidation.js"></script>
   <script type="module" src="./assets/js/functions.js"></script>
   <script type="module" src="./assets/js/register.js"></script>
+  <script src="./assets/js/script.js"></script>
 </body>
 
 </html>

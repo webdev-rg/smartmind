@@ -11,6 +11,10 @@ if (!empty($_SESSION["studentId"])) {
 
   if ($result && mysqli_num_rows($result) > 0) {
     $row = mysqli_fetch_assoc($result);
+  } else {
+    // Handle the error or redirect to a different page
+    header("Location: ../index.php");
+    exit;
   }
 
   $fetchQuestions = "SELECT * FROM `quiz_questions` WHERE `topic_unique_id` = '$selectedTopic'";
@@ -18,28 +22,59 @@ if (!empty($_SESSION["studentId"])) {
 
   if ($questionResult && mysqli_num_rows($questionResult) > 0) {
     $questions = mysqli_fetch_all($questionResult, MYSQLI_ASSOC);
-  }
-
-  $score = 0;
-
-  if (isset($_POST['nextQuestion'])) {
-    // Process and store the quiz results
-    $selectedOption = $_POST['option'];
-    // $currentQuestion = $questions[$currentQuestionIndex];
-    echo 'Selected Option: ' . $selectedOption;
-
-    if ($selectedOption === $questions['answer']) {
-      $score += 2;
-    }
-
-    // Redirect to the same page to load the next question
-    // header("Location: $_SERVER[PHP_SELF]?topic=$selectedTopic&question=" . ($currentQuestionIndex + 1));
-    exit;
-  }
-
+  } 
+  
   if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['finishQuiz'])) {
-    // Retrieve the stored score from the session
-    // $score = $_SESSION['score'];
+    // Process and store the quiz results
+    $score = 0;
+
+    // Fetch all answers for the selected topic
+    $fetchAnswers = mysqli_query($connection, "SELECT * FROM `quiz_questions` WHERE `topic_unique_id` = '$selectedTopic'");
+    if ($fetchAnswers && mysqli_num_rows($fetchAnswers) > 0) {
+      $answersData = mysqli_fetch_all($fetchAnswers, MYSQLI_ASSOC);
+
+      $option1 = $_POST["option1"];
+      $option2 = $_POST["option2"];
+      $option3 = $_POST["option3"];
+      $option4 = $_POST["option4"];
+      $option5 = $_POST["option5"];
+      $option6 = $_POST["option6"];
+      $option7 = $_POST["option7"];
+      $option8 = $_POST["option8"];
+      $option9 = $_POST["option9"];
+      $option10 = $_POST["option10"];
+
+      if ($option1 == $answersData[0]["answer"]) {
+        $score += 2;
+      }
+      if ($option2 == $answersData[1]["answer"]) {
+        $score += 2;
+      }
+      if ($option3 == $answersData[2]["answer"]) {
+        $score += 2;
+      }
+      if ($option4 == $answersData[3]["answer"]) {
+        $score += 2;
+      }
+      if ($option5 == $answersData[4]["answer"]) {
+        $score += 2;
+      }
+      if ($option6 == $answersData[5]["answer"]) {
+        $score += 2;
+      }
+      if ($option7 == $answersData[6]["answer"]) {
+        $score += 2;
+      }
+      if ($option8 == $answersData[7]["answer"]) {
+        $score += 2;
+      }
+      if ($option9 == $answersData[8]["answer"]) {
+        $score += 2;
+      }
+      if ($option10 == $answersData[9]["answer"]) {
+        $score += 2;
+      }
+    }
 
     // Getting student's name
     $studentData = mysqli_query($connection, "SELECT * FROM `students` WHERE `studentId` = $studentId");
@@ -47,9 +82,29 @@ if (!empty($_SESSION["studentId"])) {
     $studentName = $fetchStudentData["firstName"] . ' ' . $fetchStudentData["lastName"];
     $topicName = $row["topic_name"];
 
+    $level; 
+    $result;
+
+    if($socre < 4) {
+      $level = "Fail";
+      $result = "Fail";
+    }
+    if($score > 4 && $score <= 10) {
+      $level = "Basic Level";
+      $result = "Pass";
+    }
+    if($score >= 10 && $score <= 16) {
+      $level = "Intermediate Level";
+      $result = "Pass";
+    }
+    if($score >= 16 && $score <= 20) {
+      $level = "Advance Level";
+      $result = "Pass";
+    }
+
     // Store the quiz results in the database
-    $insertAttemptedQuiz = "INSERT INTO `attempted_quiz` (`studentId`, `student_name`, `topic_unique_id`, `quiz_topic_name`, `score`) 
-        VALUES ('$studentId', '$studentName', '$selectedTopic', '$topicName', '$score')";
+    $insertAttemptedQuiz = "INSERT INTO `attempted_quiz` (`studentId`, `student_name`, `topic_unique_id`, `quiz_topic_name`, `level`, `score`, `result`) 
+    VALUES ('$studentId', '$studentName', '$selectedTopic', '$topicName', '$level', '$score', '$result')";
     $insertResult = mysqli_query($connection, $insertAttemptedQuiz);
 
     if ($insertResult) {
@@ -66,6 +121,7 @@ if (!empty($_SESSION["studentId"])) {
 }
 mysqli_close($connection);
 ?>
+
 
 
 <!DOCTYPE html>
@@ -86,17 +142,22 @@ mysqli_close($connection);
   <link rel="shortcut icon" href="../assets/images/apple-touch-icon.png" type="image/x-icon" />
 
   <!-- Icons CDN Link -->
-  <link rel="stylesheet"
-    href="https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css" />
-  <link rel="stylesheet"
-    href="https://cdn-uicons.flaticon.com/2.1.0/uicons-thin-straight/css/uicons-thin-straight.css" />
+  <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css" />
+  <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.1.0/uicons-thin-straight/css/uicons-thin-straight.css" />
+
+  <!-- JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script type="module" src="../assets/js/quiz.js"></script>
+  <script type="module" src="../assets/js/functions.js"></script>
+  <!-- <script src="../assets/js/script.js"></script> -->
+
 </head>
 
 <body>
   <!-- Preloader -->
-  <div class="preloader">
+  <!-- <div class="preloader">
     <div class="spinner"></div>
-  </div>
+  </div> -->
 
   <div class="main-container">
     <div class="container">
@@ -126,16 +187,14 @@ mysqli_close($connection);
                 <div class="option-field">
                   <span>A</span>
                   <label for="<?php echo $questions[0]["option1"] ?>">
-                    <input type="radio" name="option" class="option" id="<?php echo $questions[0]["option1"] ?>"
-                      value="<?php echo $questions[0]["option1"] ?>" hidden>
+                    <input type="radio" name="option1" class="option" id="<?php echo $questions[0]["option1"] ?>" value="<?php echo $questions[0]["option1"] ?>" hidden>
                     <?php echo $questions[0]["option1"] ?>
                   </label>
                 </div>
                 <div class="option-field">
                   <span>B</span>
                   <label for="<?php echo $questions[0]["option2"] ?>">
-                    <input type="radio" name="option" class="option" id="<?php echo $questions[0]["option2"] ?>"
-                      value="<?php echo $questions[0]["option2"] ?>" hidden>
+                    <input type="radio" name="option1" class="option" id="<?php echo $questions[0]["option2"] ?>" value="<?php echo $questions[0]["option2"] ?>" hidden>
                     <?php echo $questions[0]["option2"] ?>
                   </label>
                 </div>
@@ -144,16 +203,14 @@ mysqli_close($connection);
                 <div class="option-field">
                   <span>C</span>
                   <label for="<?php echo $questions[0]["option3"] ?>">
-                    <input type="radio" name="option" class="option" id="<?php echo $questions[0]["option3"] ?>"
-                      value="<?php echo $questions[0]["option3"] ?>" hidden>
+                    <input type="radio" name="option1" class="option" id="<?php echo $questions[0]["option3"] ?>" value="<?php echo $questions[0]["option3"] ?>" hidden>
                     <?php echo $questions[0]["option3"] ?>
                   </label>
                 </div>
                 <div class="option-field">
                   <span>D</span>
                   <label for="<?php echo $questions[0]["option4"] ?>">
-                    <input type="radio" name="option" class="option" id="<?php echo $questions[0]["option4"] ?>"
-                      value="<?php echo $questions[0]["option4"] ?>" hidden>
+                    <input type="radio" name="option1" class="option" id="<?php echo $questions[0]["option4"] ?>" value="<?php echo $questions[0]["option4"] ?>" hidden>
                     <?php echo $questions[0]["option4"] ?>
                   </label>
                 </div>
@@ -178,16 +235,14 @@ mysqli_close($connection);
                 <div class="option-field">
                   <span>A</span>
                   <label for="<?php echo $questions[1]["option1"] ?>">
-                    <input type="radio" name="option" class="option" id="<?php echo $questions[1]["option1"] ?>"
-                      value="<?php echo $questions[1]["option1"] ?>" hidden>
+                    <input type="radio" name="option2" class="option" id="<?php echo $questions[1]["option1"] ?>" value="<?php echo $questions[1]["option1"] ?>" hidden>
                     <?php echo $questions[1]["option1"] ?>
                   </label>
                 </div>
                 <div class="option-field">
                   <span>B</span>
                   <label for="<?php echo $questions[1]["option2"] ?>">
-                    <input type="radio" name="option" class="option" id="<?php echo $questions[1]["option2"] ?>"
-                      value="<?php echo $questions[1]["option2"] ?>" hidden>
+                    <input type="radio" name="option2" class="option" id="<?php echo $questions[1]["option2"] ?>" value="<?php echo $questions[1]["option2"] ?>" hidden>
                     <?php echo $questions[1]["option2"] ?>
                   </label>
                 </div>
@@ -196,16 +251,14 @@ mysqli_close($connection);
                 <div class="option-field">
                   <span>C</span>
                   <label for="<?php echo $questions[1]["option3"] ?>">
-                    <input type="radio" name="option" class="option" id="<?php echo $questions[1]["option3"] ?>"
-                      value="<?php echo $questions[1]["option3"] ?>" hidden>
+                    <input type="radio" name="option2" class="option" id="<?php echo $questions[1]["option3"] ?>" value="<?php echo $questions[1]["option3"] ?>" hidden>
                     <?php echo $questions[1]["option3"] ?>
                   </label>
                 </div>
                 <div class="option-field">
                   <span>D</span>
                   <label for="<?php echo $questions[1]["option4"] ?>">
-                    <input type="radio" name="option" class="option" id="<?php echo $questions[1]["option4"] ?>"
-                      value="<?php echo $questions[1]["option4"] ?>" hidden>
+                    <input type="radio" name="option2" class="option" id="<?php echo $questions[1]["option4"] ?>" value="<?php echo $questions[1]["option4"] ?>" hidden>
                     <?php echo $questions[1]["option4"] ?>
                   </label>
                 </div>
@@ -230,16 +283,14 @@ mysqli_close($connection);
                 <div class="option-field">
                   <span>A</span>
                   <label for="<?php echo $questions[2]["option1"] ?>">
-                    <input type="radio" name="option" class="option" id="<?php echo $questions[2]["option1"] ?>"
-                      value="<?php echo $questions[2]["option1"] ?>" hidden>
+                    <input type="radio" name="option3" class="option" id="<?php echo $questions[2]["option1"] ?>" value="<?php echo $questions[2]["option1"] ?>" hidden>
                     <?php echo $questions[2]["option1"] ?>
                   </label>
                 </div>
                 <div class="option-field">
                   <span>B</span>
                   <label for="<?php echo $questions[2]["option2"] ?>">
-                    <input type="radio" name="option" class="option" id="<?php echo $questions[2]["option2"] ?>"
-                      value="<?php echo $questions[2]["option2"] ?>" hidden>
+                    <input type="radio" name="option3" class="option" id="<?php echo $questions[2]["option2"] ?>" value="<?php echo $questions[2]["option2"] ?>" hidden>
                     <?php echo $questions[2]["option2"] ?>
                   </label>
                 </div>
@@ -248,16 +299,14 @@ mysqli_close($connection);
                 <div class="option-field">
                   <span>C</span>
                   <label for="<?php echo $questions[2]["option3"] ?>">
-                    <input type="radio" name="option" class="option" id="<?php echo $questions[2]["option3"] ?>"
-                      value="<?php echo $questions[2]["option3"] ?>" hidden>
+                    <input type="radio" name="option3" class="option" id="<?php echo $questions[2]["option3"] ?>" value="<?php echo $questions[2]["option3"] ?>" hidden>
                     <?php echo $questions[2]["option3"] ?>
                   </label>
                 </div>
                 <div class="option-field">
                   <span>D</span>
                   <label for="<?php echo $questions[2]["option4"] ?>">
-                    <input type="radio" name="option" class="option" id="<?php echo $questions[2]["option4"] ?>"
-                      value="<?php echo $questions[2]["option4"] ?>" hidden>
+                    <input type="radio" name="option3" class="option" id="<?php echo $questions[2]["option4"] ?>" value="<?php echo $questions[2]["option4"] ?>" hidden>
                     <?php echo $questions[2]["option4"] ?>
                   </label>
                 </div>
@@ -282,16 +331,14 @@ mysqli_close($connection);
                 <div class="option-field">
                   <span>A</span>
                   <label for="<?php echo $questions[3]["option1"] ?>">
-                    <input type="radio" name="option" class="option" id="<?php echo $questions[3]["option1"] ?>"
-                      value="<?php echo $questions[3]["option1"] ?>" hidden>
+                    <input type="radio" name="option4" class="option" id="<?php echo $questions[3]["option1"] ?>" value="<?php echo $questions[3]["option1"] ?>" hidden>
                     <?php echo $questions[3]["option1"] ?>
                   </label>
                 </div>
                 <div class="option-field">
                   <span>B</span>
                   <label for="<?php echo $questions[3]["option2"] ?>">
-                    <input type="radio" name="option" class="option" id="<?php echo $questions[3]["option2"] ?>"
-                      value="<?php echo $questions[3]["option2"] ?>" hidden>
+                    <input type="radio" name="option4" class="option" id="<?php echo $questions[3]["option2"] ?>" value="<?php echo $questions[3]["option2"] ?>" hidden>
                     <?php echo $questions[3]["option2"] ?>
                   </label>
                 </div>
@@ -300,16 +347,14 @@ mysqli_close($connection);
                 <div class="option-field">
                   <span>C</span>
                   <label for="<?php echo $questions[3]["option3"] ?>">
-                    <input type="radio" name="option" class="option" id="<?php echo $questions[3]["option3"] ?>"
-                      value="<?php echo $questions[3]["option3"] ?>" hidden>
+                    <input type="radio" name="option4" class="option" id="<?php echo $questions[3]["option3"] ?>" value="<?php echo $questions[3]["option3"] ?>" hidden>
                     <?php echo $questions[3]["option3"] ?>
                   </label>
                 </div>
                 <div class="option-field">
                   <span>D</span>
                   <label for="<?php echo $questions[3]["option4"] ?>">
-                    <input type="radio" name="option" class="option" id="<?php echo $questions[3]["option4"] ?>"
-                      value="<?php echo $questions[3]["option4"] ?>" hidden>
+                    <input type="radio" name="option4" class="option" id="<?php echo $questions[3]["option4"] ?>" value="<?php echo $questions[3]["option4"] ?>" hidden>
                     <?php echo $questions[3]["option4"] ?>
                   </label>
                 </div>
@@ -334,16 +379,14 @@ mysqli_close($connection);
                 <div class="option-field">
                   <span>A</span>
                   <label for="<?php echo $questions[4]["option1"] ?>">
-                    <input type="radio" name="option" class="option" id="<?php echo $questions[4]["option1"] ?>"
-                      value="<?php echo $questions[4]["option1"] ?>" hidden>
+                    <input type="radio" name="option5" class="option" id="<?php echo $questions[4]["option1"] ?>" value="<?php echo $questions[4]["option1"] ?>" hidden>
                     <?php echo $questions[4]["option1"] ?>
                   </label>
                 </div>
                 <div class="option-field">
                   <span>B</span>
                   <label for="<?php echo $questions[4]["option2"] ?>">
-                    <input type="radio" name="option" class="option" id="<?php echo $questions[4]["option2"] ?>"
-                      value="<?php echo $questions[4]["option2"] ?>" hidden>
+                    <input type="radio" name="option5" class="option" id="<?php echo $questions[4]["option2"] ?>" value="<?php echo $questions[4]["option2"] ?>" hidden>
                     <?php echo $questions[4]["option2"] ?>
                   </label>
                 </div>
@@ -352,16 +395,14 @@ mysqli_close($connection);
                 <div class="option-field">
                   <span>C</span>
                   <label for="<?php echo $questions[4]["option3"] ?>">
-                    <input type="radio" name="option" class="option" id="<?php echo $questions[4]["option3"] ?>"
-                      value="<?php echo $questions[4]["option3"] ?>" hidden>
+                    <input type="radio" name="option5" class="option" id="<?php echo $questions[4]["option3"] ?>" value="<?php echo $questions[4]["option3"] ?>" hidden>
                     <?php echo $questions[4]["option3"] ?>
                   </label>
                 </div>
                 <div class="option-field">
                   <span>D</span>
                   <label for="<?php echo $questions[4]["option4"] ?>">
-                    <input type="radio" name="option" class="option" id="<?php echo $questions[4]["option4"] ?>"
-                      value="<?php echo $questions[4]["option4"] ?>" hidden>
+                    <input type="radio" name="option5" class="option" id="<?php echo $questions[4]["option4"] ?>" value="<?php echo $questions[4]["option4"] ?>" hidden>
                     <?php echo $questions[4]["option4"] ?>
                   </label>
                 </div>
@@ -386,16 +427,14 @@ mysqli_close($connection);
                 <div class="option-field">
                   <span>A</span>
                   <label for="<?php echo $questions[5]["option1"] ?>">
-                    <input type="radio" name="option" class="option" id="<?php echo $questions[5]["option1"] ?>"
-                      value="<?php echo $questions[5]["option1"] ?>" hidden>
+                    <input type="radio" name="option6" class="option" id="<?php echo $questions[5]["option1"] ?>" value="<?php echo $questions[5]["option1"] ?>" hidden>
                     <?php echo $questions[5]["option1"] ?>
                   </label>
                 </div>
                 <div class="option-field">
                   <span>B</span>
                   <label for="<?php echo $questions[5]["option2"] ?>">
-                    <input type="radio" name="option" class="option" id="<?php echo $questions[5]["option2"] ?>"
-                      value="<?php echo $questions[5]["option2"] ?>" hidden>
+                    <input type="radio" name="option6" class="option" id="<?php echo $questions[5]["option2"] ?>" value="<?php echo $questions[5]["option2"] ?>" hidden>
                     <?php echo $questions[5]["option2"] ?>
                   </label>
                 </div>
@@ -404,16 +443,14 @@ mysqli_close($connection);
                 <div class="option-field">
                   <span>C</span>
                   <label for="<?php echo $questions[5]["option3"] ?>">
-                    <input type="radio" name="option" class="option" id="<?php echo $questions[5]["option3"] ?>"
-                      value="<?php echo $questions[5]["option3"] ?>" hidden>
+                    <input type="radio" name="option6" class="option" id="<?php echo $questions[5]["option3"] ?>" value="<?php echo $questions[5]["option3"] ?>" hidden>
                     <?php echo $questions[5]["option3"] ?>
                   </label>
                 </div>
                 <div class="option-field">
                   <span>D</span>
                   <label for="<?php echo $questions[5]["option4"] ?>">
-                    <input type="radio" name="option" class="option" id="<?php echo $questions[5]["option4"] ?>"
-                      value="<?php echo $questions[5]["option4"] ?>" hidden>
+                    <input type="radio" name="option6" class="option" id="<?php echo $questions[5]["option4"] ?>" value="<?php echo $questions[5]["option4"] ?>" hidden>
                     <?php echo $questions[5]["option4"] ?>
                   </label>
                 </div>
@@ -438,16 +475,14 @@ mysqli_close($connection);
                 <div class="option-field">
                   <span>A</span>
                   <label for="<?php echo $questions[6]["option1"] ?>">
-                    <input type="radio" name="option" class="option" id="<?php echo $questions[6]["option1"] ?>"
-                      value="<?php echo $questions[6]["option1"] ?>" hidden>
+                    <input type="radio" name="option7" class="option" id="<?php echo $questions[6]["option1"] ?>" value="<?php echo $questions[6]["option1"] ?>" hidden>
                     <?php echo $questions[6]["option1"] ?>
                   </label>
                 </div>
                 <div class="option-field">
                   <span>B</span>
                   <label for="<?php echo $questions[6]["option2"] ?>">
-                    <input type="radio" name="option" class="option" id="<?php echo $questions[6]["option2"] ?>"
-                      value="<?php echo $questions[6]["option2"] ?>" hidden>
+                    <input type="radio" name="option7" class="option" id="<?php echo $questions[6]["option2"] ?>" value="<?php echo $questions[6]["option2"] ?>" hidden>
                     <?php echo $questions[6]["option2"] ?>
                   </label>
                 </div>
@@ -456,16 +491,14 @@ mysqli_close($connection);
                 <div class="option-field">
                   <span>C</span>
                   <label for="<?php echo $questions[6]["option3"] ?>">
-                    <input type="radio" name="option" class="option" id="<?php echo $questions[6]["option3"] ?>"
-                      value="<?php echo $questions[6]["option3"] ?>" hidden>
+                    <input type="radio" name="option7" class="option" id="<?php echo $questions[6]["option3"] ?>" value="<?php echo $questions[6]["option3"] ?>" hidden>
                     <?php echo $questions[6]["option3"] ?>
                   </label>
                 </div>
                 <div class="option-field">
                   <span>D</span>
                   <label for="<?php echo $questions[6]["option4"] ?>">
-                    <input type="radio" name="option" class="option" id="<?php echo $questions[6]["option4"] ?>"
-                      value="<?php echo $questions[6]["option4"] ?>" hidden>
+                    <input type="radio" name="option7" class="option" id="<?php echo $questions[6]["option4"] ?>" value="<?php echo $questions[6]["option4"] ?>" hidden>
                     <?php echo $questions[6]["option4"] ?>
                   </label>
                 </div>
@@ -490,16 +523,14 @@ mysqli_close($connection);
                 <div class="option-field">
                   <span>A</span>
                   <label for="<?php echo $questions[7]["option1"] ?>">
-                    <input type="radio" name="option" class="option" id="<?php echo $questions[7]["option1"] ?>"
-                      value="<?php echo $questions[7]["option1"] ?>" hidden>
+                    <input type="radio" name="option8" class="option" id="<?php echo $questions[7]["option1"] ?>" value="<?php echo $questions[7]["option1"] ?>" hidden>
                     <?php echo $questions[7]["option1"] ?>
                   </label>
                 </div>
                 <div class="option-field">
                   <span>B</span>
                   <label for="<?php echo $questions[7]["option2"] ?>">
-                    <input type="radio" name="option" class="option" id="<?php echo $questions[7]["option2"] ?>"
-                      value="<?php echo $questions[7]["option2"] ?>" hidden>
+                    <input type="radio" name="option8" class="option" id="<?php echo $questions[7]["option2"] ?>" value="<?php echo $questions[7]["option2"] ?>" hidden>
                     <?php echo $questions[7]["option2"] ?>
                   </label>
                 </div>
@@ -508,16 +539,14 @@ mysqli_close($connection);
                 <div class="option-field">
                   <span>C</span>
                   <label for="<?php echo $questions[7]["option3"] ?>">
-                    <input type="radio" name="option" class="option" id="<?php echo $questions[7]["option3"] ?>"
-                      value="<?php echo $questions[7]["option3"] ?>" hidden>
+                    <input type="radio" name="option8" class="option" id="<?php echo $questions[7]["option3"] ?>" value="<?php echo $questions[7]["option3"] ?>" hidden>
                     <?php echo $questions[7]["option3"] ?>
                   </label>
                 </div>
                 <div class="option-field">
                   <span>D</span>
                   <label for="<?php echo $questions[7]["option4"] ?>">
-                    <input type="radio" name="option" class="option" id="<?php echo $questions[7]["option4"] ?>"
-                      value="<?php echo $questions[7]["option4"] ?>" hidden>
+                    <input type="radio" name="option8" class="option" id="<?php echo $questions[7]["option4"] ?>" value="<?php echo $questions[7]["option4"] ?>" hidden>
                     <?php echo $questions[7]["option4"] ?>
                   </label>
                 </div>
@@ -542,16 +571,14 @@ mysqli_close($connection);
                 <div class="option-field">
                   <span>A</span>
                   <label for="<?php echo $questions[8]["option1"] ?>">
-                    <input type="radio" name="option" class="option" id="<?php echo $questions[8]["option1"] ?>"
-                      value="<?php echo $questions[8]["option1"] ?>" hidden>
+                    <input type="radio" name="option9" class="option" id="<?php echo $questions[8]["option1"] ?>" value="<?php echo $questions[8]["option1"] ?>" hidden>
                     <?php echo $questions[8]["option1"] ?>
                   </label>
                 </div>
                 <div class="option-field">
                   <span>B</span>
                   <label for="<?php echo $questions[8]["option2"] ?>">
-                    <input type="radio" name="option" class="option" id="<?php echo $questions[8]["option2"] ?>"
-                      value="<?php echo $questions[8]["option2"] ?>" hidden>
+                    <input type="radio" name="option9" class="option" id="<?php echo $questions[8]["option2"] ?>" value="<?php echo $questions[8]["option2"] ?>" hidden>
                     <?php echo $questions[8]["option2"] ?>
                   </label>
                 </div>
@@ -560,16 +587,14 @@ mysqli_close($connection);
                 <div class="option-field">
                   <span>C</span>
                   <label for="<?php echo $questions[8]["option3"] ?>">
-                    <input type="radio" name="option" class="option" id="<?php echo $questions[8]["option3"] ?>"
-                      value="<?php echo $questions[8]["option3"] ?>" hidden>
+                    <input type="radio" name="option9" class="option" id="<?php echo $questions[8]["option3"] ?>" value="<?php echo $questions[8]["option3"] ?>" hidden>
                     <?php echo $questions[8]["option3"] ?>
                   </label>
                 </div>
                 <div class="option-field">
                   <span>D</span>
                   <label for="<?php echo $questions[8]["option4"] ?>">
-                    <input type="radio" name="option" class="option" id="<?php echo $questions[8]["option4"] ?>"
-                      value="<?php echo $questions[8]["option4"] ?>" hidden>
+                    <input type="radio" name="option9" class="option" id="<?php echo $questions[8]["option4"] ?>" value="<?php echo $questions[8]["option4"] ?>" hidden>
                     <?php echo $questions[8]["option4"] ?>
                   </label>
                 </div>
@@ -594,16 +619,14 @@ mysqli_close($connection);
                 <div class="option-field">
                   <span>A</span>
                   <label for="<?php echo $questions[9]["option1"] ?>">
-                    <input type="radio" name="option" class="option" id="<?php echo $questions[9]["option1"] ?>"
-                      value="<?php echo $questions[9]["option1"] ?>" hidden>
+                    <input type="radio" name="option10" class="option" id="<?php echo $questions[9]["option1"] ?>" value="<?php echo $questions[9]["option1"] ?>" hidden>
                     <?php echo $questions[9]["option1"] ?>
                   </label>
                 </div>
                 <div class="option-field">
                   <span>B</span>
                   <label for="<?php echo $questions[9]["option2"] ?>">
-                    <input type="radio" name="option" class="option" id="<?php echo $questions[9]["option2"] ?>"
-                      value="<?php echo $questions[9]["option2"] ?>" hidden>
+                    <input type="radio" name="option10" class="option" id="<?php echo $questions[9]["option2"] ?>" value="<?php echo $questions[9]["option2"] ?>" hidden>
                     <?php echo $questions[9]["option2"] ?>
                   </label>
                 </div>
@@ -612,16 +635,14 @@ mysqli_close($connection);
                 <div class="option-field">
                   <span>C</span>
                   <label for="<?php echo $questions[9]["option3"] ?>">
-                    <input type="radio" name="option" class="option" id="<?php echo $questions[9]["option3"] ?>"
-                      value="<?php echo $questions[9]["option3"] ?>" hidden>
+                    <input type="radio" name="option10" class="option" id="<?php echo $questions[9]["option3"] ?>" value="<?php echo $questions[9]["option3"] ?>" hidden>
                     <?php echo $questions[9]["option3"] ?>
                   </label>
                 </div>
                 <div class="option-field">
                   <span>D</span>
                   <label for="<?php echo $questions[9]["option4"] ?>">
-                    <input type="radio" name="option" class="option" id="<?php echo $questions[9]["option4"] ?>"
-                      value="<?php echo $questions[9]["option4"] ?>" hidden>
+                    <input type="radio" name="option10" class="option" id="<?php echo $questions[9]["option4"] ?>" value="<?php echo $questions[9]["option4"] ?>" hidden>
                     <?php echo $questions[9]["option4"] ?>
                   </label>
                 </div>
@@ -629,19 +650,14 @@ mysqli_close($connection);
             </div>
             <hr>
             <div class="submit-btn">
-              <input type="button" name="finishQuiz" class="nextButton" id="submitQuiz" value="Next">
+              <input type="button" name="finishQuiz" class="nextButton" id="submitQuiz" value="Finish Quiz">
             </div>
+
           </div>
         </div>
       </form>
     </div>
   </div>
-
-  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="../assets/js/script.js"></script>
-  <script type="module" src="../assets/js/functions.js"></script>
-  <script type="module" src="../assets/js/quiz.js"></script>
 
 </body>
 
