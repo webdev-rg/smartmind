@@ -149,15 +149,14 @@ mysqli_close($connection);
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script type="module" src="../assets/js/quiz.js"></script>
   <script type="module" src="../assets/js/functions.js"></script>
-  <!-- <script src="../assets/js/script.js"></script> -->
 
 </head>
 
 <body>
   <!-- Preloader -->
-  <!-- <div class="preloader">
+  <div class="preloader">
     <div class="spinner"></div>
-  </div> -->
+  </div>
 
   <div class="main-container">
     <div class="container">

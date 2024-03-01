@@ -199,8 +199,8 @@ body {
   padding: 0 0 0 1.5rem;
 }
 
-.option-field input[type="radio"]:checked {
-  border-color: var(--smart-mind-700);
+.option-field input[type="radio"]:disabled {
+  background-color: var(--bg-color);
 }
 
 .option-field span {

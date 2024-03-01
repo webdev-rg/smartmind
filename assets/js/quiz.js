@@ -1,13 +1,20 @@
 import { warningMessage } from "./functions.js";
 
+const preloader = document.querySelector(".preloader");
+
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    preloader.classList.add("hide-loader");
+  }, 1000);
+});
+
 const nextButtons = document.querySelectorAll(".nextButton");
 const quizContents = document.querySelectorAll(".quiz-content-wrapper");
 const optionsContainers = document.querySelectorAll(".options-container");
 const submitQuiz = document.getElementById("submitQuiz");
 
-let seconds = 20;
+let seconds = 30;
 let timerInterval;
-let isTimerStopped = false; // New variable to track whether the timer is stopped
 
 function startTimer() {
   timerInterval = setInterval(countdown, 1000);
@@ -16,14 +23,16 @@ function startTimer() {
 function stopTimer() {
   clearInterval(timerInterval);
   console.log("Timer Stopped");
-  isTimerStopped = true;
 }
 
 function resetTimer() {
-  seconds = 20;
+  seconds = 30;
   updateTimer();
-  isTimerStopped = false; // Reset the flag when resetting the timer
 }
+
+const options = document.querySelectorAll(
+  ".quiz-content-wrapper.active .options-container .option"
+);
 
 function countdown() {
   if (seconds === 0) {
@@ -32,16 +41,16 @@ function countdown() {
       window.location.replace("/smartmind/user/profile.php");
     }, 1000);
 
-    if (!isTimerStopped) {
-      stopTimer(); // Ensure the timer stops only once
+    if(validateOptions(options)) {
+      stopTimer(); // Stop the timer when it reaches 0
     }
-
     return;
   }
 
   seconds--;
   updateTimer();
 }
+
 
 function disableOtherOptions(currentOption) {
   optionsContainers.forEach((container) => {
@@ -50,7 +59,7 @@ function disableOtherOptions(currentOption) {
     );
     options.forEach((option) => {
       if (option !== currentOption) {
-        option.disabled = true;
+        option.setAttribute("disabled", true);
       }
     });
   });
@@ -58,24 +67,21 @@ function disableOtherOptions(currentOption) {
 
 function validateOptions(options) {
   let checked = false;
+
   options.forEach((option) => {
     if (option.checked) {
-      checked = true;
       console.log(option.value);
+      checked = true;
       disableOtherOptions(option);
     }
   });
-
-  if (checked && !isTimerStopped) {
-    stopTimer();
-  }
 
   return checked;
 }
 
 function validateQuiz(index) {
   const options = optionsContainers[index].querySelectorAll(".option");
-  
+
   if (!validateOptions(options)) {
     warningMessage("Please select any one option");
   } 
