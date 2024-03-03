@@ -346,13 +346,88 @@ nav .logout-btn:hover span {
   background-color: var(--smart-mind-20);
   border-radius: 1.5rem;
 }
-.dashboard-content .all-quizes {
+.dashboard-content .all-quizes,
+.dashboard-content .rankers-content {
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
+
+.rankers-content .ranker-section {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3% 0;
+}
+.ranker-section .ranker-container {
+  width: 110rem;
+  border: 1px solid var(--border-color);
+  border-radius: 1.5rem;
+  overflow: hidden;
+}
+.ranker-container .ranker-info,
+.ranker-container .ranker-items {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+  overflow: hidden;
+}
+.ranker-container .ranker-items:last-child {
+  border-bottom: 0;
+}
+
+.ranker-info .rank-uid,
+.ranker-info .rank-name,
+.ranker-info .rank-email,
+.ranker-info .rank-username,
+.ranker-info .rank-gender {
+  width: 20rem;
+  height: 6rem;
+  background-color: var(--smart-mind-20);
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text-color);
+  /* letter-spacing: 0.15rem; */
+}
+
+.ranker-info .rank-name,
+.ranker-info .rank-email {
+  width: 25rem;
+}
+
+.ranker-items .rank-uid,
+.ranker-items .rank-name,
+.ranker-items .rank-email,
+.ranker-items .rank-username,
+.ranker-items .rank-gender {
+  width: 20rem;
+  height: 6rem;
+  background-color: var(--smart-mind-20);
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--text-color);
+  word-break: break-all;
+  text-align: center;
+  letter-spacing: 0.10rem;
+}
+
+.ranker-items .rank-name,
+.ranker-items .rank-email {
+  width: 25rem;
+}
+
 .all-quizes h1 {
   margin-left: 1.5rem;
 }
@@ -470,8 +545,10 @@ nav .logout-btn:hover span {
   background-color: var(--smart-mind-20);
   border: 1px solid var(--border-color);
   border-radius: 1.5rem;
-  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.1);
   cursor: pointer;
+}
+.cards .card.active {
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.1);
 }
 .card .icon {
   width: 8rem;

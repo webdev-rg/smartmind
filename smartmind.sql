@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 29, 2024 at 03:20 PM
+-- Generation Time: Mar 03, 2024 at 11:56 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -55,7 +55,7 @@ CREATE TABLE `attempted_quiz` (
   `student_name` varchar(255) NOT NULL,
   `topic_unique_id` varchar(255) NOT NULL,
   `quiz_topic_name` varchar(255) NOT NULL,
-  `time_taken` varchar(100) NOT NULL,
+  `langImages` varchar(255) NOT NULL,
   `level` varchar(100) NOT NULL,
   `score` int(11) NOT NULL,
   `result` varchar(100) NOT NULL
@@ -65,9 +65,8 @@ CREATE TABLE `attempted_quiz` (
 -- Dumping data for table `attempted_quiz`
 --
 
-INSERT INTO `attempted_quiz` (`id`, `studentId`, `student_name`, `topic_unique_id`, `quiz_topic_name`, `time_taken`, `level`, `score`, `result`) VALUES
-(1, 1, 'Rushikesh Ghodke', 'sI0M15UO0sKc', 'Html 5', '', '', 10, ''),
-(2, 1, 'Rushikesh Ghodke', 'sI0M15UO0sKc', 'Html 5', '', '', 16, '');
+INSERT INTO `attempted_quiz` (`id`, `studentId`, `student_name`, `topic_unique_id`, `quiz_topic_name`, `langImages`, `level`, `score`, `result`) VALUES
+(1, 4, 'Karan Thorat', 'sI0M15UO0sKc', 'Html 5', 'icons8-html-5-50.png', 'Advance Level', 16, 'Pass');
 
 -- --------------------------------------------------------
 
@@ -88,46 +87,6 @@ CREATE TABLE `changepasswordtoken` (
 
 INSERT INTO `changepasswordtoken` (`id`, `student_id`, `verificationToken`, `tokenExpirationTime`) VALUES
 (1, 2, '65cd8101b338b', '2024-02-15 08:47:01');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `css_quiz`
---
--- Error reading structure for table smartmind.css_quiz: #1030 - Got error 194 &quot;Tablespace is missing for a table&quot; from storage engine InnoDB
--- Error reading data for table smartmind.css_quiz: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near &#039;FROM `smartmind`.`css_quiz`&#039; at line 1
-
--- --------------------------------------------------------
-
---
--- Table structure for table `html_quiz`
---
--- Error reading structure for table smartmind.html_quiz: #1030 - Got error 194 &quot;Tablespace is missing for a table&quot; from storage engine InnoDB
--- Error reading data for table smartmind.html_quiz: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near &#039;FROM `smartmind`.`html_quiz`&#039; at line 1
-
--- --------------------------------------------------------
-
---
--- Table structure for table `java_quiz`
---
--- Error reading structure for table smartmind.java_quiz: #1030 - Got error 194 &quot;Tablespace is missing for a table&quot; from storage engine InnoDB
--- Error reading data for table smartmind.java_quiz: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near &#039;FROM `smartmind`.`java_quiz`&#039; at line 1
-
--- --------------------------------------------------------
-
---
--- Table structure for table `js_quiz`
---
--- Error reading structure for table smartmind.js_quiz: #1030 - Got error 194 &quot;Tablespace is missing for a table&quot; from storage engine InnoDB
--- Error reading data for table smartmind.js_quiz: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near &#039;FROM `smartmind`.`js_quiz`&#039; at line 1
-
--- --------------------------------------------------------
-
---
--- Table structure for table `python_quiz`
---
--- Error reading structure for table smartmind.python_quiz: #1030 - Got error 194 &quot;Tablespace is missing for a table&quot; from storage engine InnoDB
--- Error reading data for table smartmind.python_quiz: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near &#039;FROM `smartmind`.`python_quiz`&#039; at line 1
 
 -- --------------------------------------------------------
 
@@ -156,14 +115,14 @@ INSERT INTO `quiz_questions` (`id`, `topic_unique_id`, `topic_name`, `question`,
 (1, 'sI0M15UO0sKc', 'Html 5', 'What does HTML stand for?', 'High-level Textual Markup Language', 'Hyperlink and Text Management Language', 'HyperText Markup Language', 'Hyper Transfer Markup Language', 'HyperText Markup Language', '2'),
 (2, 'sI0M15UO0sKc', 'Html 5', 'What does the \"DOCTYPE\" declaration in HTML do?', 'It specifies the background color of the page.', 'It creates a new HTML document.', 'It declares a function in JavaScript.', 'It defines the document type and version of HTML.', 'It defines the document type and version of HTML.', '2'),
 (3, 'sI0M15UO0sKc', 'Html 5', 'Which HTML element is used to create a hyperlink?', 'link', 'href', 'a', 'p', 'a', '2'),
-(4, 'sI0M15UO0sKc', 'Html 5', 'What does the \"alt\" attribute in the <img> tag provide?', 'It defines the alignment of the image.', 'It specifies the source URL of the image.', 'It provides alternative text for the image.', 'It sets the width of the image.', 'It provides alternative text for the image.', '2'),
+(4, 'sI0M15UO0sKc', 'Html 5', 'What does the \"alt\" attribute in the img tag provide?', 'It defines the alignment of the image.', 'It specifies the source URL of the image.', 'It provides alternative text for the image.', 'It sets the width of the image.', 'It provides alternative text for the image.', '2'),
 (5, 'sI0M15UO0sKc', 'Html 5', 'Which tag is used to define an ordered list in HTML?', 'ul', 'li', 'ol', 'dl', 'ol', '2'),
 (6, 'sI0M15UO0sKc', 'Html 5', 'Which HTML element is used to create interactive forms with input fields?', 'input', 'form', 'submit', 'field', 'form', '2'),
 (7, 'sI0M15UO0sKc', 'Html 5', 'What is the purpose of the HTML template element?', 'To create a placeholder for deferred scripts', 'To define a template for web components', 'To specify a template for styling elements', 'To define a generic template for any HTML content', 'To define a template for web components', '2'),
 (8, 'sI0M15UO0sKc', 'Html 5', 'Which HTML5 attribute is used to provide a short hint that describes the expected value of an input field?', 'hint', 'placeholder', 'description', 'tooltip', 'placeholder', '2'),
 (9, 'sI0M15UO0sKc', 'Html 5', 'What is the purpose of the HTML details and summary elements?', 'To define a dropdown menu', 'To create an accordion-style interface', 'To display details that can be toggled open or closed', 'To define a summary for an HTML document', 'To display details that can be toggled open or closed', '2'),
 (10, 'sI0M15UO0sKc', 'Html 5', 'In HTML, what does the defer attribute do when included in a script tag?', 'Specifies that the script should be executed in the background', 'Defers the execution of the script until the page is fully loaded', 'Delays the loading of the script until after the page has been parsed', 'Declares the script as deferred and asynchronous', 'Delays the loading of the script until after the page has been parsed', '2'),
-(11, 'XDONyJzAZMTR', 'CSS', 'How can you include an external CSS file in an HTML document?', 'style src=\"styles.css\"', 'link rel=\"stylesheet\" type=\"text/css\" href=\"styles.css\"', 'include src=\"styles.css\"', 'css href=\"styles.css\"', 'link rel=\"stylesheet\" type=\"text/css\" href=\"styles.css\"', '2'),
+(11, 'XDONyJzAZMTR', 'CSS', 'How can you include an external CSS file in an HTML document?', 'style src=\'styles.css\'', 'link rel=\'stylesheet\' type=\'text/css\' href=\'styles.css\'', 'include src=\'styles.css\'', 'css href=\'styles.css\'', 'link rel=\'stylesheet\'type=\'text/css\' href=\'styles.css\'', '2'),
 (12, 'XDONyJzAZMTR', 'CSS', 'Which CSS property is used to control the space between the elements border and content?', 'margin property', 'padding property', 'spacing', 'border-spacing', 'padding property', '2'),
 (13, 'XDONyJzAZMTR', 'CSS', 'What is the CSS property used for changing the color of the text?', 'font-color', 'text-color', 'color', 'text-style', 'color', '2'),
 (14, 'XDONyJzAZMTR', 'CSS', 'Which CSS selector targets all the <p> elements that are children of the element with id \"container\"?', '#container > p', '#container p', '.container > p', '.container p', '#container p', '2'),
@@ -206,7 +165,7 @@ CREATE TABLE `quiz_topics` (
 
 INSERT INTO `quiz_topics` (`topic_id`, `topicUniqueId`, `langImages`, `topic_name`, `questions`, `marks`, `quiz_time`) VALUES
 (1, 'sI0M15UO0sKc', 'icons8-html-5-50.png', 'Html 5', '10', '20', ''),
-(2, 'XDONyJzAZMTR', 'icons8-css-48.png', 'CSS', '10', '20', ''),
+(2, 'XDONyJzAZMTR', 'icons8-css-48.png', 'CSS 3', '10', '20', ''),
 (3, 'mY3uDxbX9425', 'Javascript.png', 'JavaScript', '10', '20', ''),
 (4, 'LiZGngXaTKs5', 'Java.png', 'Java', '', '', ''),
 (5, 'ZOyskewcj714', '', 'Php', '', '', ''),
@@ -241,10 +200,10 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`studentId`, `studentUniqueId`, `firstName`, `lastName`, `dateOfBirth`, `gender`, `email`, `mobileNumber`, `username`, `studentImage`, `password`, `accountCreationDateTime`, `verificationToken`, `tokenExpirationTime`, `isVerified`) VALUES
-(1, 982337, 'Rushikesh', 'Ghodke', '2001-09-19', 'male', 'rushighodke01@gmail.com', '9082600331', 'rushi_19', 'IMG_20210917_210850_999.webp', '$2y$10$VwaeIiMwkW1cwP9SjQeKwOsjvEIq7ePk6BNd8mNinWKRmVgsLPHb2', '2024-02-14 21:13:19', '65ccdf972572c', '2024-02-14 21:18:19', 1),
-(2, 796104, 'Saurabh', 'Jadhav', '2003-09-28', 'male', 'saurabhjadhav9642@gmail.com', '8421569642', 'saurabhJ28', 'saurabhjadhav.jpg', '$2y$10$R6YUkjnM9rOxljl8kkrKs.YNxpz7OSlKRxeOdxmsx2TQlBYKZ5pPq', '2024-02-15 08:39:03', '65cd804f92b4d', '2024-02-15 08:44:03', 1),
-(3, 505792, 'Prathamesh', 'Khandagale', '2003-12-03', 'male', 'khandagaleprathamesh5@gmail.com', '8855842906', 'prathameshkhandagale258', '', '$2y$10$fnug4EaYzrmTX6B08Jd0Ie69ft/SqCcpwjc0HvamfYsRqDM1xhm1a', '2024-02-15 08:53:27', '65cd83afaed1b', '2024-02-15 08:58:27', 1),
-(7, 417385, 'Rushikesh', 'Ghodke', '2001-09-19', 'male', 'rushi.ghodke09@gmail.com', '7485968574', 'rushikeshghodke102', '', '$2y$10$reL0P0aFgGuMSF070wjBZurRSr8E9VUSEBAZG/MwZfxQixDcakXDi', '2024-02-15 19:29:54', '65ce18da01a57', '2024-02-15 19:34:54', 1);
+(1, 132206, 'Rushikesh', 'Ghodke', '0201-09-19', 'male', 'rushighodke01@gmail.com', '9082600331', 'rushi_19', 'IMG_20210917_210850_999.webp', '$2y$10$F0nBxw2tOgKjqCk6sbUha.mFxZnwNYPootrIy0XLUvmA85STzOyqu', '2024-03-02 09:36:33', '65e2a5c9eeafd', '2024-03-02 09:41:33', 1),
+(2, 526567, 'Saurabh', 'Jadhav', '2003-09-28', 'male', 'saurabhjadhav9642@gmail.com', '8421569642', 'saurabhjadhav346', 'saurabhjadhav.jpg', '$2y$10$QtkKXBbFr6h/xyKaE3SBKOHBV3.5UYpn6JwK/oWgipdinr9NJqB7C', '2024-03-02 09:47:53', '65e2a8711ce37', '2024-03-02 09:52:53', 1),
+(3, 646520, 'Prathamesh', 'Khandagale', '2003-12-03', 'male', 'khandagaleprathamesh5@gmail.com', '8855842905', 'prathamesh_45', 'WhatsApp Image 2024-03-02 at 09.56.29_24772614.jpg', '$2y$10$5OLwW.uXNvwexxyYvtsl/eMl7AOMmg8tEf2Yl0FuagbD1pHxC/n/G', '2024-03-02 09:53:03', '65e2a9a7c8287', '2024-03-02 09:58:03', 1),
+(4, 830703, 'Karan', 'Thorat', '2003-04-18', 'male', 'karanthorat184@gmail.com', '7277686060', 'karanthorat988', 'IMG_9219.jpg', '$2y$10$yNJELXBdHFLQj/A7sjSBpOt8b1yfdmWZHD7uWMKI66PXQd/WwPKMq', '2024-03-02 10:12:38', '65e2ae3e7206e', '2024-03-02 10:17:38', 1);
 
 --
 -- Indexes for dumped tables
@@ -300,7 +259,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `attempted_quiz`
 --
 ALTER TABLE `attempted_quiz`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `changepasswordtoken`
@@ -324,7 +283,7 @@ ALTER TABLE `quiz_topics`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `studentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `studentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -104,7 +104,7 @@ export const finalValidation = (e) => {
     submitButton.setAttribute("type", "submit");
     document.querySelector("form").submit();
     setTimeout(() => {
-      window.location.replace("/smartmind-online-quiz-game/registerSuccess.html");
+      window.location.replace("/smartmind/registerSuccess.html");
     }, 2000);
   }
 };

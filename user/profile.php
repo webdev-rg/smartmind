@@ -9,7 +9,7 @@ include "../assets/php/attemptedQuiz.php";
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SmartMind - 
+  <title>SmartMind -
     <?php echo $fetchData['firstName'] . ' ' . $fetchData['lastName']; ?>
   </title>
 
@@ -111,17 +111,23 @@ include "../assets/php/attemptedQuiz.php";
             <div class="quiz-container">
               <div class="lang-image-container">
                 <div class="lang-image">
-                  <img src="../assets/images/Javascript.png" alt="">
+                  <?php
+                  if (!empty($row["langImages"])) {
+                  ?>
+                    <img src="../assets/languageImages/<?php echo $row["langImages"] ?>" alt="language-logo">
+                  <?php
+                  } else {
+                  ?>
+                    <img src="../assets/images/default-lang-image.png" alt="default-lang-image">
+                  <?php
+                  }
+                  ?>
                 </div>
               </div>
               <div class="quiz-attempted-info">
                 <div class="profile-skills-item">
                   <h2><?php echo $row["quiz_topic_name"]; ?></h2>
                 </div>
-                <!-- <div class="profile-skills-item">
-                  <span class="profile-skills-item-label">Time Taken: </span>
-                  <span class="profile-skills-item-value"><?php echo $row["time_taken"]; ?></span>
-                </div> -->
                 <div class="profile-skills-item">
                   <span class="profile-skills-item-label">Level: </span>
                   <span class="profile-skills-item-value"><?php echo $row["level"]; ?></span>
@@ -137,19 +143,19 @@ include "../assets/php/attemptedQuiz.php";
               </div>
 
             </div>
-            <?php
+          <?php
           }
-            ?>
-          <?php
+          ?>
+        <?php
         } else {
-          ?>
+        ?>
 
-            <div class="no-quiz-attempted">
-              <span>No quiz attempted yet.</span>
-            </div>
-          <?php
+          <div class="no-quiz-attempted">
+            <span>No quiz attempted yet.</span>
+          </div>
+        <?php
         }
-          ?>
+        ?>
       </div>
     </div>
   </section>

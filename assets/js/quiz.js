@@ -13,43 +13,39 @@ const quizContents = document.querySelectorAll(".quiz-content-wrapper");
 const optionsContainers = document.querySelectorAll(".options-container");
 const submitQuiz = document.getElementById("submitQuiz");
 
-let seconds = 30;
-let timerInterval;
+// let seconds = 30;
+// let timerInterval;
 
-function startTimer() {
-  timerInterval = setInterval(countdown, 1000);
-}
+// function startTimer() {  
+//   timerInterval = setInterval(countdown, 1000);
+// }
 
-function stopTimer() {
-  clearInterval(timerInterval);
-  console.log("Timer Stopped");
-}
+// function stopTimer() {
+//   clearInterval(timerInterval);
+//   console.log("Timer Stopped");
+// }
 
-function resetTimer() {
-  seconds = 30;
-  updateTimer();
-}
+// function resetTimer() {
+//   seconds = 30;
+//   updateTimer();
+// }
 
 const options = document.querySelectorAll(
   ".quiz-content-wrapper.active .options-container .option"
 );
 
-function countdown() {
-  if (seconds === 0) {
-    warningMessage("Timer's up!");
-    setTimeout(() => {
-      window.location.replace("/smartmind/user/profile.php");
-    }, 1000);
+// function countdown() {
+//   if (seconds === 0) {
+//     warningMessage("Timer's up!");
+//     setTimeout(() => {
+//       window.location.replace("/smartmind/user/profile.php");
+//     }, 1000);
+//     return;
+//   }
 
-    if(validateOptions(options)) {
-      stopTimer(); // Stop the timer when it reaches 0
-    }
-    return;
-  }
-
-  seconds--;
-  updateTimer();
-}
+//   seconds--;
+//   updateTimer();
+// }
 
 
 function disableOtherOptions(currentOption) {
@@ -65,19 +61,19 @@ function disableOtherOptions(currentOption) {
   });
 }
 
-function validateOptions(options) {
-  let checked = false;
+// function validateOptions(options) {
+//   let checked = false;
 
-  options.forEach((option) => {
-    if (option.checked) {
-      console.log(option.value);
-      checked = true;
-      disableOtherOptions(option);
-    }
-  });
+//   options.forEach((option) => {
+//     if (option.checked) {
+//       console.log(option.value);
+//       checked = true;
+//       disableOtherOptions(option);
+//     }
+//   });
 
-  return checked;
-}
+//   return checked;
+// }
 
 function validateQuiz(index) {
   const options = optionsContainers[index].querySelectorAll(".option");
@@ -108,7 +104,7 @@ function updateTimer() {
 }
 
 // Initial call to display the timer
-updateTimer();
+// updateTimer();
 
-// Start the timer initially
-startTimer();
+// // Start the timer initially
+// startTimer();

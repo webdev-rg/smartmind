@@ -91,11 +91,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       }
     }
 
-    echo '<script>
-    setTimeout(() => {
-      window.location.replace("/smartmind/registerSuccess.html");
-    }, 2000);
-    </script>';
+    // echo '<script>
+    // setTimeout(() => {
+    //   window.location.replace("/smartmind/registerSuccess.html");
+    // }, 2000);
+    // </script>';
   }
   // Close the database connection
   $connection->close();

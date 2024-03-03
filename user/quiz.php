@@ -22,8 +22,8 @@ if (!empty($_SESSION["studentId"])) {
 
   if ($questionResult && mysqli_num_rows($questionResult) > 0) {
     $questions = mysqli_fetch_all($questionResult, MYSQLI_ASSOC);
-  } 
-  
+  }
+
   if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['finishQuiz'])) {
     // Process and store the quiz results
     $score = 0;
@@ -81,30 +81,38 @@ if (!empty($_SESSION["studentId"])) {
     $fetchStudentData = mysqli_fetch_assoc($studentData);
     $studentName = $fetchStudentData["firstName"] . ' ' . $fetchStudentData["lastName"];
     $topicName = $row["topic_name"];
+    $langImageResult = mysqli_query($connection, "SELECT `langImages` FROM `quiz_topics` WHERE `topicUniqueId` = '$selectedTopic'");
+    if ($langImageResult && mysqli_num_rows($langImageResult) > 0) {
+      // Fetch the data as an associative array
+      $langImageData = mysqli_fetch_assoc($langImageResult);
 
-    $level; 
+      // Access the 'langImages' column
+      $langImage = $langImageData['langImages'];
+    }
+
+    $level;
     $result;
 
-    if($socre < 4) {
+    if ($score < 4) {
       $level = "Fail";
       $result = "Fail";
     }
-    if($score > 4 && $score <= 10) {
+    if ($score > 4 && $score <= 10) {
       $level = "Basic Level";
       $result = "Pass";
     }
-    if($score >= 10 && $score <= 16) {
+    if ($score >= 10 && $score <= 16) {
       $level = "Intermediate Level";
       $result = "Pass";
     }
-    if($score >= 16 && $score <= 20) {
+    if ($score >= 16 && $score <= 20) {
       $level = "Advance Level";
       $result = "Pass";
     }
 
     // Store the quiz results in the database
-    $insertAttemptedQuiz = "INSERT INTO `attempted_quiz` (`studentId`, `student_name`, `topic_unique_id`, `quiz_topic_name`, `level`, `score`, `result`) 
-    VALUES ('$studentId', '$studentName', '$selectedTopic', '$topicName', '$level', '$score', '$result')";
+    $insertAttemptedQuiz = "INSERT INTO `attempted_quiz` (`studentId`, `student_name`, `topic_unique_id`, `quiz_topic_name`, `langImages`, `level`, `score`, `result`) 
+    VALUES ('$studentId', '$studentName', '$selectedTopic', '$topicName', '$langImage', '$level', '$score', '$result')";
     $insertResult = mysqli_query($connection, $insertAttemptedQuiz);
 
     if ($insertResult) {
@@ -144,11 +152,10 @@ mysqli_close($connection);
   <!-- Icons CDN Link -->
   <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css" />
   <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.1.0/uicons-thin-straight/css/uicons-thin-straight.css" />
+  <!-- Add these lines to the head section of your HTML -->
+  <script>
 
-  <!-- JavaScript -->
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script type="module" src="../assets/js/quiz.js"></script>
-  <script type="module" src="../assets/js/functions.js"></script>
+  </script>
 
 </head>
 
@@ -658,6 +665,13 @@ mysqli_close($connection);
     </div>
   </div>
 
+  <!-- JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script type="module" src="../assets/js/functions.js"></script>
+  <!-- <script type="module" src="../assets/js/quiz.js"></script> -->
+  <!-- <script type="module" src="../assets/js/quiz2.js"></script> -->4
+  <script type="module" src="../assets/js/quiz3.js"></script>
+  <script src="../assets/js/script.js"></script>
 </body>
 
 </html>

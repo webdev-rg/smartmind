@@ -218,7 +218,7 @@ include "./assets/php/storeData.php";
     </div>
   </div>
 
-  <!-- jQuery CDN -->
+  <!-- JavaScript -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script type="module" src="./assets/js/registerFormValidation.js"></script>
   <script type="module" src="./assets/js/functions.js"></script>

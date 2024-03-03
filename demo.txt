@@ -1032,3 +1032,13 @@ mysqli_close($connection);
           </div>
         </div>
       </form>
+
+
+
+
+
+
+
+
+Create a 30 seconds timer for each question if option is checked stop timer and next button id clicked 
+show next question and reset timer, id option is not checked and next button is clicked show warning message

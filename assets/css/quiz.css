@@ -198,6 +198,16 @@ body {
   gap: 2rem;
   padding: 0 0 0 1.5rem;
 }
+.option-group .option-field.active {
+  border-color: var(--smart-mind-700);
+}
+.option-group .option-field.active label {
+  color: var(--smart-mind-700);
+}
+.option-group .option-field.active span {
+  background-color: var(--smart-mind-700);
+  color: var(--smart-mind-20);
+}
 
 .option-field input[type="radio"]:disabled {
   background-color: var(--bg-color);

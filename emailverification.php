@@ -29,13 +29,7 @@ if (isset($_GET['token'])) {
         $updateQuery = "UPDATE `students` SET `isVerified` = 1 WHERE `email` = '$studentEmail'";
 
         if (mysqli_query($connection, $updateQuery)) {
-          echo "<h1 style='text-align: center; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);'>Email verified successfully<br>You will be redirected to the login page</h1>";         
-          echo "<script>
-            setTimeout(() => {
-              window.location.replace('login.php');
-            }, 3000);
-          </script>";
-          // header("Location: login.php");
+          header("Location: emailverified.html");
           exit();
         } 
         else {

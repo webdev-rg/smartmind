@@ -7,6 +7,8 @@ include "../assets/php/connection.php";
 $selectQuery = mysqli_query($connection, "SELECT * FROM `students`");
 $selectQuizes = mysqli_query($connection, "SELECT * FROM `quiz_topics`");
 $selectTopicName = mysqli_query($connection, "SELECT * FROM `quiz_topics`");
+
+$rankers = mysqli_query($connection, "SELECT * FROM `attempted_quiz` WHERE `score` BETWEEN 16 AND 20");
 ?>
 
 <!DOCTYPE html>
@@ -89,33 +91,23 @@ $selectTopicName = mysqli_query($connection, "SELECT * FROM `quiz_topics`");
           <h2>Admin Panel</h2>
           <div class="admin">
             <div class="admin-info-wrapper">
-              <div class="admin-image">
-                <img src="../assets/images/profile-user.png" alt="admin-profile-image">
-              </div>
               <div class="admin-info">
                 <h2><?php echo $fetchData["adminFirstName"] . ' ' . $fetchData["adminLastName"]; ?></h2>
                 <p><?php echo $fetchData["adminEmail"] ?></p>
               </div>
-              <i class="fi fi-rr-angle-small-down"></i>
             </div>
-            <ul class="admin-menu">
-              <li class="active"><a href="./profile.php">Profile</a></li>
-              <li><a href="./setting.php">Setting</a></li>
-              <li><a href="./adminlogout.php">Logout</a></li>
-            </ul>
-          </div>
         </header>
 
         <section class="inner-right-side">
           <!-- Dashboard -->
           <div class="dashboard section active">
             <div class="cards">
-              <div class="card dashboardTab">
+              <div class="card dashboardTab active">
                 <div class="icon">
                   <img src="../assets/images/icons/ranking.png" alt="ranking">
                 </div>
                 <div class="card-info">
-                  <h1>Ranking</h1>
+                  <h1>Rankers</h1>
                 </div>
               </div>
               <div class="card dashboardTab">
@@ -137,13 +129,41 @@ $selectTopicName = mysqli_query($connection, "SELECT * FROM `quiz_topics`");
             </div>
 
             <div class="dashboard-content">
-              <div class="content">
+              <div class="rankers-content content active">
                 <h1>Ranking</h1>
+
+                <div class="ranker-section">
+                  <div class="ranker-container">
+                    <ul class="ranker-info">
+                      <li class="rank-name">Topic Name</li>
+                      <li class="rank-uid">Student Name</li>
+                      <li class="rank-email">Level</li>
+                      <li class="rank-username">Score</li>
+                      <li class="rank-gender">Result</li>
+                    </ul>
+
+                    <?php
+                    if (mysqli_num_rows($rankers) > 0) {
+                      while ($topRankers = mysqli_fetch_assoc($rankers)) {
+                    ?>
+                        <ul class="ranker-items">
+                          <li class="rank-name"><?php echo $topRankers["quiz_topic_name"] ?></li>
+                          <li class="rank-uid"><?php echo $topRankers["student_name"] ?></li>
+                          <li class="rank-email"><?php echo $topRankers["level"] ?></li>
+                          <li class="rank-username"><?php echo $topRankers["score"] ?></li>
+                          <li class="rank-gender"><?php echo $topRankers["result"] ?></li>
+                        </ul>
+                    <?php
+                      }
+                    }
+                    ?>
+                  </div>
+                </div>
               </div>
               <div class="content">
                 <h1>Attempted Quiz</h1>
               </div>
-              <div class="all-quizes content active">
+              <div class="all-quizes content">
                 <h1>All Quizes</h1>
                 <div class="quiz-topics">
                   <div class="topics-card">
