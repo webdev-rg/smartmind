@@ -142,53 +142,6 @@ body {
 .admin-info p {
   font-size: 1.2rem;
 }
-.admin-info-wrapper i {
-  font-size: 2.5rem;
-  color: var(--text-color);
-}
-
-.admin .admin-menu {
-  position: absolute;
-  width: 25rem;
-  top: 120%;
-  left: 0;
-  padding: 1.5rem;
-  background-color: var(--smart-mind-20);
-  border-radius: 1.2rem;
-  box-shadow: 0 5px 3rem rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  opacity: 0;
-  visibility: hidden;
-  /* pointer-events: none; */
-  transition: 0.2s ease-in-out;
-  z-index: 999;
-}
-
-.admin-menu li a {
-  display: block;
-  padding: 1.5rem 1rem;
-  border-radius: 0.5rem;
-  transition: 0.2s ease-in-out;
-  font-size: 1.5rem;
-  font-weight: 500;
-  color: var(--text-color);
-}
-.admin-menu li.active a {
-  background-color: var(--bg-color);
-  color: var(--smart-mind-700);
-}
-.admin-menu li a:hover {
-  background-color: var(--bg-color);
-  color: var(--smart-mind-700);
-}
-
-.admin:hover > .admin-menu {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-}
 
 .container {
   width: 100%;
@@ -204,23 +157,11 @@ body {
   column-gap: 3rem;
 }
 .questions-container .question-card {
-  position: relative;
   width: 100%;
   padding: 2rem 3rem;
   background-color: var(--smart-mind-20);
   border-radius: 1.5rem;
   box-shadow: 0 0 3rem rgba(0, 0, 0, 0.1);
-}
-.question-card .menu {
-  position: absolute;
-  right: 2rem;
-  top:2rem;
-  cursor: pointer;
-}
-.question-card .menu i {
-  font-size: 1.6rem;
-  color: var(--text-color);
-  /* opacity: 0.8; */
 }
 
 .question-card .question-info-wrapper {
@@ -230,7 +171,7 @@ body {
   gap: 1.5rem;
 }
 .question-info-wrapper .question-item {
-  width: 95%;
+  width: 100%;
   border: 1px solid var(--border-color);
   border-radius: 1rem;
   padding: 1rem;
@@ -309,5 +250,20 @@ body {
   font-size: 1.6rem;
   font-weight: 500;
   transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.question-card form .delete-question {
+  width: 100%;
+}
+.delete-question input[type="submit"] {
+  padding: 1.5rem 3rem;
+  background-color: #ef4444;
+  color: var(--smart-mind-20);
+  font-size: 1.5rem;
+  font-weight: 600;
+  outline: none;
+  border: none;
+  border-radius: 0.8rem;
   cursor: pointer;
 }

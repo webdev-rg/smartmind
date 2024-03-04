@@ -347,7 +347,8 @@ nav .logout-btn:hover span {
   border-radius: 1.5rem;
 }
 .dashboard-content .all-quizes,
-.dashboard-content .rankers-content {
+.dashboard-content .rankers-content,
+.dashboard-content .attempted_quiz {
   width: 100%;
   height: 100%;
   display: flex;
@@ -395,12 +396,6 @@ nav .logout-btn:hover span {
   font-size: 1.4rem;
   font-weight: 600;
   color: var(--text-color);
-  /* letter-spacing: 0.15rem; */
-}
-
-.ranker-info .rank-name,
-.ranker-info .rank-email {
-  width: 25rem;
 }
 
 .ranker-items .rank-uid,
@@ -420,12 +415,7 @@ nav .logout-btn:hover span {
   color: var(--text-color);
   word-break: break-all;
   text-align: center;
-  letter-spacing: 0.10rem;
-}
-
-.ranker-items .rank-name,
-.ranker-items .rank-email {
-  width: 25rem;
+  /* letter-spacing: 0.10rem; */
 }
 
 .all-quizes h1 {

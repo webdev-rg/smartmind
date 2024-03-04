@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Disabled Button Example</title>
+    <style>
+      #myButton {
+        padding: 10px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="myButton" onclick="handleButtonClick()">Click me</button>
+
+    <script>
+      // Get the current time
+      const currentTime = new Date().getTime();
+
+      // Set the duration to 2 days in milliseconds
+      const twoDaysInMillis = 2 * 24 * 60 * 60 * 1000;
+
+      // Calculate the time when the button should be enabled
+      const enableTime = currentTime + twoDaysInMillis;
+
+      // Get the button element
+      const myButton = document.getElementById("myButton");
+
+      // Check if the current time is less than the enable time
+      if (currentTime < enableTime) {
+        // Disable the button
+        myButton.disabled = true;
+
+        // Schedule a function to enable the button after 2 days
+        setTimeout(() => {
+          myButton.disabled = false;
+        }, 2000);
+      }
+
+      // Function to handle button click
+      function handleButtonClick() {
+        alert("Button clicked!");
+      }
+    </script>
+  </body>
+</html>

@@ -9,6 +9,8 @@ $selectQuizes = mysqli_query($connection, "SELECT * FROM `quiz_topics`");
 $selectTopicName = mysqli_query($connection, "SELECT * FROM `quiz_topics`");
 
 $rankers = mysqli_query($connection, "SELECT * FROM `attempted_quiz` WHERE `score` BETWEEN 16 AND 20");
+
+$allAttemptedQuizes = mysqli_query($connection, "SELECT * FROM `attempted_quiz`");
 ?>
 
 <!DOCTYPE html>
@@ -140,6 +142,7 @@ $rankers = mysqli_query($connection, "SELECT * FROM `attempted_quiz` WHERE `scor
                       <li class="rank-email">Level</li>
                       <li class="rank-username">Score</li>
                       <li class="rank-gender">Result</li>
+                      <li class="rank-gender">Rank</li>
                     </ul>
 
                     <?php
@@ -152,6 +155,23 @@ $rankers = mysqli_query($connection, "SELECT * FROM `attempted_quiz` WHERE `scor
                           <li class="rank-email"><?php echo $topRankers["level"] ?></li>
                           <li class="rank-username"><?php echo $topRankers["score"] ?></li>
                           <li class="rank-gender"><?php echo $topRankers["result"] ?></li>
+                          <li class="rank-gender">
+                            <?php
+                            if ($topRankers["score"] >= 16 && $topRankers["score"] <= 20) {
+                            ?>
+                              1
+                            <?php
+                            } else if ($topRankers["score"] >= 10 && $topRankers["score"] <= 16) {
+                            ?>
+                              2
+                            <?php
+                            } else if ($topRankers["score"] >= 10 && $topRankers["score"] <= 16) {
+                            ?>
+                              3
+                            <?php
+                            }
+                            ?>
+                          </li>
                         </ul>
                     <?php
                       }
@@ -160,8 +180,36 @@ $rankers = mysqli_query($connection, "SELECT * FROM `attempted_quiz` WHERE `scor
                   </div>
                 </div>
               </div>
-              <div class="content">
+              <div class="attempted_quiz content">
                 <h1>Attempted Quiz</h1>
+
+                <div class="student-section">
+                  <div class="student-container">
+                    <ul class="student-info">
+                      <li class="stud-name">Topic Name</li>
+                      <li class="stud-uid">Student Name</li>
+                      <li class="stud-email">Level</li>
+                      <li class="stud-username">Score</li>
+                      <li class="stud-gender">Result</li>
+                    </ul>
+
+                    <?php
+                    if (mysqli_num_rows($allAttemptedQuizes) > 0) {
+                      while ($attemptedQuiz = mysqli_fetch_assoc($allAttemptedQuizes)) {
+                    ?>
+                        <ul class="student-items">
+                          <li class="stud-name"><?php echo $attemptedQuiz["quiz_topic_name"] ?></li>
+                          <li class="stud-uid"><?php echo $attemptedQuiz["student_name"] ?></li>
+                          <li class="stud-email"><?php echo $attemptedQuiz["level"] ?></li>
+                          <li class="stud-username"><?php echo $attemptedQuiz["score"] ?></li>
+                          <li class="stud-gender"><?php echo $attemptedQuiz["result"] ?></li>
+                        </ul>
+                    <?php
+                      }
+                    }
+                    ?>
+                  </div>
+                </div>
               </div>
               <div class="all-quizes content">
                 <h1>All Quizes</h1>

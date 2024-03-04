@@ -1,0 +1,125 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  text-decoration: none;
+  list-style: none;
+  outline: none;
+}
+
+:root {
+  --bg-color: #f3f7ff;
+  --border-color: #e3e7ea;
+  --smart-mind-20: #ffffff;
+  --smart-mind-50: #edf7ff;
+  --smart-mind-100: #d6ecff;
+  --smart-mind-200: #b5dfff;
+  --smart-mind-300: #83ccff;
+  --smart-mind-400: #48b0ff;
+  --smart-mind-500: #1e8aff;
+  --smart-mind-600: #0669ff;
+  --smart-mind-700: #004eec;
+  --smart-mind-800: #0841c5;
+  --smart-mind-900: #0d3c9b;
+  --smart-mind-950: #0e255d;
+  --text-color: #0e0e11;
+}
+
+::selection {
+  background-color: var(--smart-mind-700);
+  color: var(--smart-mind-20);
+}
+
+::-webkit-scrollbar {
+  appearance: none;
+  width: 6px;
+  height: 6px;
+  background-color: #ddd;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 50px;
+  border: 1px solid #999;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  background-color: var(--bg-color);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  width: 50rem;
+  padding: 3rem 5rem;
+  background-color: var(--smart-mind-20);
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.container .greeting-image {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 0;
+}
+.greeting-image img {
+  width: 20rem;
+}
+
+.container .student-name {
+  width: 100%;
+  padding: 0.5rem 0;
+  text-align: center;
+}
+.student-name h2 {
+  font-size: 2.5rem;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.container .quiz-details {
+  width: 100%;
+  padding: 0.5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.quiz-details p {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.container .back-to-home {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.back-to-home a {
+  padding: 1.2rem 2.4rem;
+  background-color: var(--smart-mind-700);
+  color: var(--smart-mind-20);
+  font-size: 1.4rem;
+  font-weight: 500;
+  border-radius: 1rem;
+}
