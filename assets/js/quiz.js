@@ -1,110 +1,196 @@
-import { warningMessage } from "./functions.js";
+// import { warningMessage } from "./functions.js";
 
-const preloader = document.querySelector(".preloader");
+// let timer;
+// let seconds = 60;
 
-window.addEventListener("load", () => {
-  setTimeout(() => {
-    preloader.classList.add("hide-loader");
-  }, 1000);
-});
+// // 30 Seconds Timer
+// function startTimer() {
+//   clearInterval(timer);
+//   timer = setInterval(function () {
+//     document.getElementById("timer").innerText = `00 : ${
+//       seconds < 10 ? "0" : ""
+//     }${seconds}`;
+//     seconds--;
 
-const nextButtons = document.querySelectorAll(".nextButton");
-const quizContents = document.querySelectorAll(".quiz-content-wrapper");
-const optionsContainers = document.querySelectorAll(".options-container");
-const submitQuiz = document.getElementById("submitQuiz");
-
-// let seconds = 30;
-// let timerInterval;
-
-// function startTimer() {  
-//   timerInterval = setInterval(countdown, 1000);
+//     if (seconds < 0) {
+//       clearInterval(timer);
+//       warningMessage("Time's up");
+//       setTimeout(() => {
+//         window.location.replace("/smartmind/user/profile.php");
+//       }, 2000);
+//     }
+//     validateOptions();
+//   }, 1000);
 // }
 
-// function stopTimer() {
-//   clearInterval(timerInterval);
-//   console.log("Timer Stopped");
-// }
+// startTimer();
 
-// function resetTimer() {
-//   seconds = 30;
-//   updateTimer();
-// }
+// // Reset timer
+// const resetTimer = () => {
+//   clearInterval(timer);
+//   seconds = 60;
+//   startTimer();
+// };
 
-const options = document.querySelectorAll(
-  ".quiz-content-wrapper.active .options-container .option"
-);
+// // Check option is selected or not
 
-// function countdown() {
-//   if (seconds === 0) {
-//     warningMessage("Timer's up!");
-//     setTimeout(() => {
-//       window.location.replace("/smartmind/user/profile.php");
-//     }, 1000);
-//     return;
-//   }
+// const optionFields = document.querySelectorAll(
+//   ".quiz-content-wrapper.active .option-field"
+// );
+// const options = document.querySelectorAll(
+//   ".quiz-content-wrapper.active .option-field .option"
+// );
 
-//   seconds--;
-//   updateTimer();
-// }
+// const validateOptions = () => {
+//   let isChecked = false;
 
-
-function disableOtherOptions(currentOption) {
-  optionsContainers.forEach((container) => {
-    const options = container.querySelectorAll(
-      ".quiz-content-wrapper.active .option"
-    );
-    options.forEach((option) => {
-      if (option !== currentOption) {
-        option.setAttribute("disabled", true);
-      }
-    });
-  });
-}
-
-// function validateOptions(options) {
-//   let checked = false;
-
-//   options.forEach((option) => {
+//   options.forEach((option, index) => {
 //     if (option.checked) {
-//       console.log(option.value);
-//       checked = true;
-//       disableOtherOptions(option);
+//       isChecked = true;
+//       // clearInterval(timer);
+//       optionFields[index].classList.add("active");
+//     } else {
+//       optionFields[index].classList.remove("active");
 //     }
 //   });
 
-//   return checked;
-// }
+//   return isChecked;
+// };
 
-function validateQuiz(index) {
-  const options = optionsContainers[index].querySelectorAll(".option");
+// // Show next question
 
-  if (!validateOptions(options)) {
-    warningMessage("Please select any one option");
-  } 
-  else {
+// const nextButtons = document.querySelectorAll(".nextButton");
+// const quizContents = document.querySelectorAll(".quiz-content-wrapper");
+// const submitQuiz = document.getElementById("submitQuiz");
+
+// const nextQuestion = (index) => {
+//   let checkedOption = validateOptions();
+
+//   if (!checkedOption) {
+//     warningMessage("Select one option");
+//   } else {
+//     resetTimer();
+
+//     if (index === quizContents.length - 1) {
+//       submitQuiz.setAttribute("type", "submit");
+//       document.querySelector("form").submit();
+//     } else {
+//       quizContents[index].classList.remove("active");
+//       quizContents[index + 1].classList.add("active");
+//     }
+//   }
+// };
+
+// nextButtons.forEach((button, index) => {
+//   button.addEventListener("click", () => nextQuestion(index));
+// });
+
+import { warningMessage } from "./functions.js";
+
+let timer;
+let seconds = 30;
+
+// 30 Seconds Timer
+function startTimer() {
+  // clearInterval(timer);
+  timer = setInterval(function () {
+    document.getElementById("timer").innerText = `00 : ${
+      seconds < 10 ? "0" : ""
+    }${seconds}`;
+    seconds--;
+
+    if (seconds < 0) {
+      clearInterval(timer);
+      warningMessage("Time's up");
+      setTimeout(() => {
+        window.location.replace("/smartmind/user/profile.php");
+      }, 2000);
+    }
+    validateOptions();
+  }, 1000);
+}
+
+startTimer();
+
+// Reset timer
+const resetTimer = () => {
+  clearInterval(timer);
+  seconds = 30;
+  startTimer();
+};
+
+// Check option is selected or not
+const validateOptions = () => {
+  let isChecked = false;
+
+  const activeOptionFields = document.querySelectorAll(
+    ".quiz-content-wrapper.active .option-field"
+  );
+  const activeOptions = document.querySelectorAll(
+    ".quiz-content-wrapper.active .option-field .option"
+  );
+
+  activeOptions.forEach((option, index) => {
+    if (option.checked) {
+      isChecked = true;
+      console.log(option.value);
+      clearInterval(timer);
+      activeOptionFields[index].classList.add("active");
+    } else {
+      activeOptionFields[index].classList.remove("active");
+    }
+  });
+
+  return isChecked;
+};
+
+// Show next question
+const nextButtons = document.querySelectorAll(".nextButton");
+const quizContents = document.querySelectorAll(".quiz-content-wrapper");
+const submitQuiz = document.getElementById("submitQuiz");
+const progressBar = document.querySelector(".bar");
+const exitQuiz = document.getElementById("exit-quiz");
+
+const nextQuestion = (index) => {
+  let checkedOption = validateOptions();
+
+  if (!checkedOption) {
+    warningMessage("Select one option");
+  } else {
+    resetTimer();
+
     if (index === quizContents.length - 1) {
       submitQuiz.setAttribute("type", "submit");
       document.querySelector("form").submit();
     } else {
-      resetTimer();
-      startTimer();
       quizContents[index].classList.remove("active");
       quizContents[index + 1].classList.add("active");
+      progressBar.style.width = `${(index + 2) * 10}%`;
     }
   }
-}
+};
 
 nextButtons.forEach((button, index) => {
-  button.addEventListener("click", () => validateQuiz(index));
+  button.addEventListener("click", () => nextQuestion(index));
 });
 
-function updateTimer() {
-  const timerDisplay = document.getElementById("timer");
-  timerDisplay.textContent = `00 : ${seconds < 10 ? "0" : ""}${seconds}`;
-}
-
-// Initial call to display the timer
-// updateTimer();
-
-// // Start the timer initially
-// startTimer();
+exitQuiz.addEventListener("click", () => {
+  clearInterval(timer);
+  Swal.fire({
+    title: "<h2 style='font-size: 1.8rem; font-weight: 600; line-height: 1.9;'>Are you sure?</h2>",
+    text: "You want to exit the quiz?",
+    icon: "question",
+    showCancelButton: true,
+    confirmButtonColor: "#004eec",
+    cancelButtonColor: "#ef4444",
+    cancelButtonText: "<h2>No</h2>",
+    confirmButtonText: "<h2>Yes</h2>",
+    iconColor: "#004eec"
+  }).then((result) => {
+    if (result.isConfirmed) {
+      window.location.replace("./profile.php");
+    } else if(result.dismiss === Swal.DismissReason.cancel) {
+      startTimer();
+    }
+  });
+});

@@ -97,7 +97,7 @@ if (!empty($_SESSION["studentId"])) {
       $level = "Fail";
       $result = "Fail";
     }
-    if ($score > 4 && $score <= 10) {
+    if ($score >= 4 && $score <= 10) {
       $level = "Basic Level";
       $result = "Pass";
     }

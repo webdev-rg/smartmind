@@ -256,7 +256,11 @@ body {
 .question-card form .delete-question {
   width: 100%;
 }
-.delete-question input[type="submit"] {
+.delete-question button {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 1.5rem 3rem;
   background-color: #ef4444;
   color: var(--smart-mind-20);
