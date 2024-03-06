@@ -107,21 +107,12 @@ body {
 .main-container .left-container {
   width: 60%;
   height: 100%;
-  background-color: var(--bg-color);
-  padding: 1.5rem;
-  border-radius: 0 1rem 1rem 0;
-}
-
-.left-container .left-inner-container {
-  width: 100%;
-  height: 100%;
-  background-color: var(--smart-mind-20);
-  border-radius: 1rem;
-  padding: 2.5rem;
   position: relative;
+  background-color: var(--bg-color);
+  padding: 2.5rem;
 }
 
-.left-inner-container .logo {
+.left-container .logo {
   width: 100%;
   padding: 1rem 0;
 }
@@ -129,7 +120,7 @@ body {
   width: 25rem;
 }
 
-.left-inner-container .heading {
+.left-container .heading {
   position: absolute;
   width: 100%;
   height: calc(100% - 20rem);
@@ -163,14 +154,8 @@ body {
   padding: 1.5rem;
   border-radius: 1rem 0 0 1rem;
 }
-.right-container .right-inner-container {
-  width: 100%;
-  height: 100%;
-  background-color: var(--bg-color);
-  border-radius: 1rem;
-}
 
-.right-inner-container .links {
+.right-container .links {
   width: 100%;
   height: 100%;
   display: flex;
