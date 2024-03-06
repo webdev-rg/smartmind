@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 04, 2024 at 05:40 PM
+-- Generation Time: Mar 06, 2024 at 06:01 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -70,7 +70,9 @@ INSERT INTO `attempted_quiz` (`id`, `studentId`, `student_name`, `topic_unique_i
 (2, 1, 'Rushikesh Ghodke', 'mY3uDxbX9425', 'JavaScript', 'Javascript.png', 'Advance Level', 16, 'Pass'),
 (3, 2, 'Saurabh Jadhav', 'sI0M15UO0sKc', 'Html 5', 'icons8-html-5-50.png', 'Intermediate Level', 14, 'Pass'),
 (5, 2, 'Saurabh Jadhav', 'XDONyJzAZMTR', 'CSS', 'icons8-css-48.png', 'Intermediate Level', 14, 'Pass'),
-(6, 1, 'Rushikesh Ghodke', 'sI0M15UO0sKc', 'Html 5', 'icons8-html-5-50.png', 'Advance Level', 18, 'Pass');
+(6, 1, 'Rushikesh Ghodke', 'sI0M15UO0sKc', 'Html 5', 'icons8-html-5-50.png', 'Advance Level', 18, 'Pass'),
+(7, 3, 'Prathamesh Khandagale', 'sI0M15UO0sKc', 'Html 5', 'icons8-html-5-50.png', 'Intermediate Level', 14, 'Pass'),
+(8, 3, 'Prathamesh Khandagale', 'mY3uDxbX9425', 'JavaScript', 'Javascript.png', 'Intermediate Level', 12, 'Pass');
 
 -- --------------------------------------------------------
 
@@ -145,7 +147,17 @@ INSERT INTO `quiz_questions` (`question_id`, `topic_unique_id`, `topic_name`, `q
 (29, 'mY3uDxbX9425', 'JavaScript', 'How does the JavaScript async/await syntax simplify asynchronous code?', 'It replaces callbacks with synchronous code', 'It automatically handles errors in asynchronous code', 'It allows asynchronous code to be written in a more synchronous style', 'It prevents the execution of multiple asynchronous operations simultaneously', 'It allows asynchronous code to be written in a more synchronous style', '2'),
 (30, 'mY3uDxbX9425', 'JavaScript', 'What is the concept of \"hoisting\" in JavaScript?', 'It refers to the process of moving all variable declarations to the top of the code', 'It is a way to prioritize certain functions over others', 'It allows variables to be declared after they are used', 'It is a technique for optimizing code execution', 'It refers to the process of moving all variable declarations to the top of the code', '2'),
 (32, 'sI0M15UO0sKc', 'Html 5', 'What is the purpose of the HTML canvas element?', 'It is used for drawing graphics using JavaScript.', 'It defines a container for metadata.', 'It creates a table in HTML.', 'It defines a section in a document.', 'It is used for drawing graphics using JavaScript.', '2'),
-(33, 'sI0M15UO0sKc', 'Html 5', 'What is the purpose of the HTML template element?', 'To define a template for web components', 'To create a placeholder for deferred scripts', 'To specify a template for styling elements', 'To define a generic template for any HTML content', 'To define a template for web components', '2');
+(33, 'sI0M15UO0sKc', 'Html 5', 'What is the purpose of the HTML template element?', 'To define a template for web components', 'To create a placeholder for deferred scripts', 'To specify a template for styling elements', 'To define a generic template for any HTML content', 'To define a template for web components', '2'),
+(34, 'LiZGngXaTKs5', 'Java', 'Which of the following is the correct way to declare a variable in Java?', 'variable x;', 'int x;', 'declare x;', 'x = int;', 'int x;', '2'),
+(36, 'LiZGngXaTKs5', 'Java', 'Which keyword is used to define a constant in Java?', 'final', 'immutable', 'const', 'constant', 'const', '2'),
+(37, 'LiZGngXaTKs5', 'Java', 'What does the toString() method do in Java?', 'Converts a string to lowercase', 'Converts an object to a string', 'Converts a string to uppercase', 'Converts a number to a string', 'Converts an object to a string', '2'),
+(38, 'LiZGngXaTKs5', 'Java', 'What is the difference between == and .equals() when comparing objects in Java?', '== compares object references, while .equals() compares the contents of objects', 'They are equivalent and can be used interchangeably', '.equals() is used for primitive data types, and == is used for objects', '.equals() is a syntax error in Java', '== compares object references, while .equals() compares the contents of objects', '2'),
+(39, 'LiZGngXaTKs5', 'Java', 'Which of the following Java features is used for achieving multiple inheritance?', 'Abstract classes', 'Interfaces', 'Pacakages', 'Enum', 'Interfaces', '2'),
+(40, 'LiZGngXaTKs5', 'Java', 'What is the purpose of the Comparable interface in Java?', 'It is used for comparing primitive data types', 'It allows a class to implement custom ordering for objects', 'It provides methods for comparing arrays', 'It is used for serializing objects', 'It allows a class to implement custom ordering for objects', '2'),
+(41, 'LiZGngXaTKs5', 'Java', 'Which design pattern is used to define a family of algorithms, encapsulate each algorithm, and make them interchangeable?', 'Strategy Pattern', 'Observer Pattern', 'Singleton Pattern', 'Builder Pattern', 'Strategy Pattern', '2'),
+(42, 'LiZGngXaTKs5', 'Java', 'How does Java handle multiple inheritance?', 'Java supports multiple inheritance through the use of the extends keyword', 'Java supports multiple inheritance through the use of interfaces', 'Java does not support multiple inheritance', 'Java supports multiple inheritance through the use of the implements keyword', 'Java supports multiple inheritance through the use of interfaces', '2'),
+(43, 'LiZGngXaTKs5', 'Java', 'What does the this keyword refer to in Java?', 'It refers to the current instance of the class', 'It is used to create a new instance of a class', 'It refers to the superclass of the current class', 'It is a reserved keyword and has no specific purpose', 'It refers to the current instance of the class', '2'),
+(44, 'LiZGngXaTKs5', 'Java', 'What is the difference between ArrayList and LinkedList in Java?', 'ArrayList is implemented as a linked list, while LinkedList is implemented as an array', 'ArrayList is a resizable array, and LinkedList is a doubly-linked list', 'ArrayList is faster for random access, while LinkedList is faster for insertions and deletions', 'ArrayList is a fixed-size array, and LinkedList can dynamically grow or shrink', 'ArrayList is a resizable array, and LinkedList is a doubly-linked list', '2');
 
 -- --------------------------------------------------------
 
@@ -171,9 +183,8 @@ INSERT INTO `quiz_topics` (`topic_id`, `topicUniqueId`, `langImages`, `topic_nam
 (1, 'sI0M15UO0sKc', 'icons8-html-5-50.png', 'Html 5', '10', '20', ''),
 (2, 'XDONyJzAZMTR', 'icons8-css-48.png', 'CSS 3', '10', '20', ''),
 (3, 'mY3uDxbX9425', 'Javascript.png', 'JavaScript', '10', '20', ''),
-(4, 'LiZGngXaTKs5', 'Java.png', 'Java', '', '', ''),
-(5, 'ZOyskewcj714', '', 'Php', '', '', ''),
-(6, 'eLnhFhpylGrt', '', 'Go', '', '', '');
+(4, 'LiZGngXaTKs5', 'Java.png', 'Java', '10', '20', ''),
+(5, 'ZOyskewcj714', '', 'Php', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -263,7 +274,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `attempted_quiz`
 --
 ALTER TABLE `attempted_quiz`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `changepasswordtoken`
@@ -275,7 +286,7 @@ ALTER TABLE `changepasswordtoken`
 -- AUTO_INCREMENT for table `quiz_questions`
 --
 ALTER TABLE `quiz_questions`
-  MODIFY `question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `quiz_topics`

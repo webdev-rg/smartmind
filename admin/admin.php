@@ -155,23 +155,7 @@ $allAttemptedQuizes = mysqli_query($connection, "SELECT * FROM `attempted_quiz`"
                           <li class="rank-email"><?php echo $topRankers["level"] ?></li>
                           <li class="rank-username"><?php echo $topRankers["score"] ?></li>
                           <li class="rank-gender"><?php echo $topRankers["result"] ?></li>
-                          <li class="rank-gender">
-                            <?php
-                            if ($topRankers["score"] >= 16 && $topRankers["score"] <= 20) {
-                            ?>
-                              1
-                            <?php
-                            } else if ($topRankers["score"] >= 10 && $topRankers["score"] <= 16) {
-                            ?>
-                              2
-                            <?php
-                            } else if ($topRankers["score"] >= 10 && $topRankers["score"] <= 16) {
-                            ?>
-                              3
-                            <?php
-                            }
-                            ?>
-                          </li>
+                          <li class="rank-gender">1</li>
                         </ul>
                     <?php
                       }

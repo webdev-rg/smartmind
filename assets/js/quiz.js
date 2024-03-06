@@ -165,7 +165,7 @@ const nextQuestion = (index) => {
     } else {
       quizContents[index].classList.remove("active");
       quizContents[index + 1].classList.add("active");
-      progressBar.style.width = `${(index + 2) * 10}%`;
+      progressBar.style.width = `${(index + 1) * 10}%`;
     }
   }
 };
