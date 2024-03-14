@@ -31,7 +31,7 @@ include "../assets/php/admin/storeAdminData.php";
           <img src="../assets/images/Logo.svg" alt="logo" />
         </div>
 
-        <h1>Admin Login</h1>
+        <h1>Admin Registration</h1>
 
         <div class="register-form-container">
           <form method="post" class="register-form">
