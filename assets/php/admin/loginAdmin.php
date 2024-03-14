@@ -122,8 +122,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         ';
       echo '<script>
       setTimeout(() => {
-        window.location.replace("admin.php");</script>;
-      }, 2000)';
+        window.location.replace("admin.php");
+      }, 2000);
+      </script>';
     } 
     else {
       echo '
