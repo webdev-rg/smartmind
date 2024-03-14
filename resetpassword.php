@@ -75,9 +75,7 @@ include "./assets/php/resetPasword.php";
       </div>
     </div>
   </div>
-
-  <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script type="module" src="./assets/js/login.js"></script> -->
+  <script src="./assets/js/script.js"></script>
 </body>
 
 </html>
