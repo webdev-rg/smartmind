@@ -64,6 +64,14 @@ export const contactFormValidation = () => {
     warningMessage("Enter Your Mobile Number");
     mobileNumber.focus();
   } 
+  else if(mobileNumber.value.length < 10) {
+    warningMessage("Mobile Number Should be 10 digits");
+    mobileNumber.focus();
+  }
+  else if(mobileNumber.value.length > 10) {
+    warningMessage("Mobile Number Should be 10 digits");
+    mobileNumber.focus();
+  }
   else {
     forms[2].classList.remove("active");
     forms[3].classList.add("active");
