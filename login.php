@@ -85,10 +85,10 @@ include "./assets/php/loginUser.php";
                   <input type="password" name="password" id="password" placeholder="Password" required />
                 </div>
               </div>
-
+<!-- 
               <div class="forgot-password">
                 <a href="#">Forgot Password?</a>
-              </div>
+              </div> -->
 
               <div class="btn">
                 <input type="button" value="Login" name="submit" id="loginBtn" class="loginBtn" />
